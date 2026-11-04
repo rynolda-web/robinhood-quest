@@ -1,12 +1,12 @@
 [
   {
     "date": "2026-11-04",
-    "updated_at": "2026-11-04T22:59:39.990857+00:00",
-    "account_equity_usd": 49569.15,
-    "tracked_total_usd": 11245.77,
-    "daily_pl_usd": -14.86,
-    "daily_pl_pct": -0.13,
-    "total_pl_usd": -14.86,
-    "total_pl_pct": -0.13
+    "updated_at": "2026-11-04T23:08:54.364525+00:00",
+    "initial_cost_usd": 10002.63,
+    "tracked_total_usd": 9956.68,
+    "daily_pl_usd": -45.95,
+    "daily_pl_pct": -0.46,
+    "total_pl_usd": -45.95,
+    "total_pl_pct": -0.46
   }
 ]
