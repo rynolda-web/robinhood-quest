@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROBINHOOD QUEST // 8-BIT PORTFOLIO TRACKER</title>
+  <title>ROBINHOOD QUEST // $10K MANAGED PORTFOLIO</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -40,7 +40,6 @@
       background-position: 0 0, 30px 30px;
     }
 
-    /* Subtle CRT scanline effect */
     body::after {
       content: "";
       position: fixed;
@@ -57,11 +56,10 @@
     }
 
     .container {
-      max-width: 980px;
+      max-width: 1020px;
       margin: 0 auto;
     }
 
-    /* Classic NES double-pixel frame */
     .nes-box {
       background: var(--panel);
       border: 4px solid var(--border);
@@ -190,7 +188,7 @@
 
     .hp-bar-outer {
       display: inline-block;
-      width: 72px;
+      width: 68px;
       height: 12px;
       background: #282828;
       border: 2px solid var(--border);
@@ -233,23 +231,23 @@
     <div class="nes-box header">
       <div class="title">★ ROBINHOOD QUEST 1986 ★</div>
       <div class="subtitle">
-        PLAYER 1: RYNOLDA &nbsp;|&nbsp; MODE: AUTO-REBALANCE &nbsp;|&nbsp;
-        <span class="blink" id="status-lamp">● STAGE CLEAR</span>
+        MANAGED $10K TECH PORTFOLIO &nbsp;|&nbsp; MODE: AUTO-REBALANCE &nbsp;|&nbsp;
+        <span class="blink">● STAGE ACTIVE</span>
       </div>
     </div>
 
     <!-- TOP SCOREBOARD HUD -->
     <div class="hud-grid">
       <div class="hud-card">
-        <span class="hud-label">HIGH SCORE (ACCOUNT)</span>
-        <div class="hud-value" id="hud-account">$--</div>
+        <span class="hud-label">STARTING GOLD (COST)</span>
+        <div class="hud-value" id="hud-cost">$10,002.63</div>
       </div>
       <div class="hud-card">
-        <span class="hud-label">10-STOCK QUEST TOTAL</span>
+        <span class="hud-label">DAILY TOTAL</span>
         <div class="hud-value" id="hud-tracked">$--</div>
       </div>
       <div class="hud-card">
-        <span class="hud-label">TODAY PROFIT / LOSS</span>
+        <span class="hud-label">DAILY PROFIT / LOSS</span>
         <div class="hud-value" id="hud-daily-pl">$--</div>
       </div>
       <div class="hud-card">
@@ -262,17 +260,17 @@
     <div class="nes-box">
       <div class="section-title">
         <span>► STAGE LOG: DAILY TOTAL &amp; PROFIT/LOSS</span>
-        <button class="btn-nes" id="refresh-btn" onclick="loadData()">↻ INSERT COIN (REFRESH)</button>
+        <button class="btn-nes" onclick="loadData()">↻ INSERT COIN (REFRESH)</button>
       </div>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th>DATE</th>
-              <th class="num">ACCOUNT TOTAL</th>
-              <th class="num">10-STOCK TOTAL</th>
-              <th class="num">DAILY P/L ($)</th>
-              <th class="num">DAILY P/L (%)</th>
+              <th class="num">STARTING COST</th>
+              <th class="num">DAILY TOTAL</th>
+              <th class="num">PROFIT / LOSS ($)</th>
+              <th class="num">PROFIT / LOSS (%)</th>
               <th class="num">TOTAL P/L ($)</th>
             </tr>
           </thead>
@@ -283,10 +281,10 @@
       </div>
     </div>
 
-    <!-- ACTIVE PARTY: 10 STOCK POSITIONS -->
+    <!-- ACTIVE PARTY: 10 MANAGED STOCK POSITIONS -->
     <div class="nes-box">
       <div class="section-title">
-        <span>► ACTIVE PARTY (10 TECH CHAMPIONS)</span>
+        <span>► ACTIVE PARTY (10 MANAGED POSITIONS)</span>
         <span style="font-size: 9px; color: var(--muted);" id="last-updated">UPDATED: --</span>
       </div>
       <div class="table-wrap">
@@ -297,165 +295,186 @@
               <th>CLASS</th>
               <th class="num">PRICE</th>
               <th class="num">SHARES</th>
-              <th class="num">GOLD VALUE</th>
-              <th class="num">P/L (%)</th>
+              <th class="num">COST BASIS</th>
+              <th class="num">DAILY TOTAL</th>
+              <th class="num">PROFIT / LOSS</th>
               <th class="num">HP (SCORE)</th>
             </tr>
           </thead>
           <tbody id="party-tbody">
-            <tr><td colspan="7">SUMMONING PARTY...</td></tr>
+            <tr><td colspan="8">SUMMONING PARTY...</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
     <div class="footer">
-      © 1986-2026 ANTIGRAVITY CORP. ALL RIGHTS RESERVED. AUTO-UPDATES HOURLY VIA GITHUB ACTIONS.
+      © 1986-2026 ANTIGRAVITY CORP. MANAGED $10,000 PORTFOLIO ONLY. AUTO-UPDATES HOURLY.
     </div>
   </div>
 
   <script>window.EMBEDDED_REBALANCE = {
-  "timestamp": "2026-11-04T22:57:19.551004+00:00",
+  "timestamp": "2026-11-04T23:08:54.363172+00:00",
   "status": "rebalance_checked",
-  "total_tracked_equity_usd": 11245.77,
+  "total_tracked_equity_usd": 9956.68,
   "rotations_executed": 0,
   "actions": [],
   "portfolio_snapshot": [
     {
       "symbol": "AAPL",
       "bucket": "core_tech",
-      "equity_usd": 990.53,
+      "cost_basis_usd": 1001.27,
+      "equity_usd": 990.1,
+      "pl_usd": -11.17,
       "quantity": 2.83,
-      "price": 350.01,
-      "total_return_pct": -1.07,
+      "price": 349.86,
+      "total_return_pct": -1.12,
       "score": 113.15,
       "rsi_14": 41.7,
       "sma_200": 297.34,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "AMZN",
       "bucket": "core_tech",
-      "equity_usd": 1188.7,
-      "quantity": 4.474362,
-      "price": 265.67,
-      "total_return_pct": -0.77,
+      "cost_basis_usd": 1001.11,
+      "equity_usd": 984.71,
+      "pl_usd": -16.4,
+      "quantity": 3.71,
+      "price": 265.42,
+      "total_return_pct": -1.64,
       "score": 102.26,
       "rsi_14": 48.7,
       "sma_200": 243.5,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "CDNS",
       "bucket": "emerging_tech",
+      "cost_basis_usd": 999.72,
       "equity_usd": 998.99,
+      "pl_usd": -0.73,
       "quantity": 3.03,
       "price": 329.7,
       "total_return_pct": -0.07,
       "score": 86.94,
       "rsi_14": 47.3,
       "sma_200": 327.61,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "GRMN",
       "bucket": "emerging_tech",
+      "cost_basis_usd": 1000.5,
       "equity_usd": 991.78,
+      "pl_usd": -8.72,
       "quantity": 3.43,
       "price": 289.15,
       "total_return_pct": -0.87,
       "score": 109.28,
       "rsi_14": 40.7,
       "sma_200": 254.43,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "ISRG",
       "bucket": "emerging_tech",
+      "cost_basis_usd": 999.47,
       "equity_usd": 986.6,
+      "pl_usd": -12.87,
       "quantity": 2.06,
       "price": 478.93,
       "total_return_pct": -1.29,
       "score": 96.64,
       "rsi_14": 58.6,
       "sma_200": 432.07,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "META",
       "bucket": "core_tech",
-      "equity_usd": 993.81,
+      "cost_basis_usd": 999.74,
+      "equity_usd": 992.22,
+      "pl_usd": -7.52,
       "quantity": 1.57,
-      "price": 633.0,
-      "total_return_pct": -0.59,
+      "price": 631.99,
+      "total_return_pct": -0.75,
       "score": 66.85,
       "rsi_14": 37.0,
       "sma_200": 632.04,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "MSFT",
       "bucket": "core_tech",
-      "equity_usd": 2074.05,
-      "quantity": 3.73528,
-      "price": 555.26,
-      "total_return_pct": 5.35,
+      "cost_basis_usd": 1000.98,
+      "equity_usd": 998.62,
+      "pl_usd": -2.36,
+      "quantity": 1.8,
+      "price": 554.7865,
+      "total_return_pct": -0.24,
       "score": 114.77,
       "rsi_14": 49.4,
       "sma_200": 438.48,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "PLTR",
       "bucket": "emerging_tech",
-      "equity_usd": 1008.42,
+      "cost_basis_usd": 1000.04,
+      "equity_usd": 1005.28,
+      "pl_usd": 5.24,
       "quantity": 5.84,
-      "price": 172.6744,
-      "total_return_pct": 0.84,
+      "price": 172.1366,
+      "total_return_pct": 0.52,
       "score": 80.08,
       "rsi_14": 35.8,
       "sma_200": 153.6,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "SHOP",
       "bucket": "emerging_tech",
-      "equity_usd": 1013.32,
+      "cost_basis_usd": 999.86,
+      "equity_usd": 1008.71,
+      "pl_usd": 8.85,
       "quantity": 6.58,
-      "price": 154.0,
-      "total_return_pct": 1.35,
+      "price": 153.3,
+      "total_return_pct": 0.89,
       "score": 94.32,
       "rsi_14": 33.3,
       "sma_200": 129.81,
-      "hours_held": 4.6
+      "hours_held": 4.8
     },
     {
       "symbol": "TSM",
       "bucket": "core_tech",
-      "equity_usd": 999.57,
+      "cost_basis_usd": 1000.49,
+      "equity_usd": 999.67,
+      "pl_usd": -0.82,
       "quantity": 2.52,
-      "price": 396.6535,
-      "total_return_pct": -0.09,
+      "price": 396.6933,
+      "total_return_pct": -0.08,
       "score": 71.11,
       "rsi_14": 39.3,
       "sma_200": 400.76,
-      "hours_held": 4.6
+      "hours_held": 4.8
     }
   ]
 };
 window.EMBEDDED_HISTORY = [
   {
     "date": "2026-11-04",
-    "updated_at": "2026-11-04T22:59:39.990857+00:00",
-    "account_equity_usd": 49569.15,
-    "tracked_total_usd": 11245.77,
-    "daily_pl_usd": -14.86,
-    "daily_pl_pct": -0.13,
-    "total_pl_usd": -14.86,
-    "total_pl_pct": -0.13
+    "updated_at": "2026-11-04T23:08:54.364525+00:00",
+    "initial_cost_usd": 10002.63,
+    "tracked_total_usd": 9956.68,
+    "daily_pl_usd": -45.95,
+    "daily_pl_pct": -0.46,
+    "total_pl_usd": -45.95,
+    "total_pl_pct": -0.46
   }
 ];</script>
-<script>
+  <script>
     function fmtUsd(val, signed = false) {
       const n = Number(val || 0);
       const sign = signed ? (n >= 0 ? "+" : "-") : (n < 0 ? "-" : "");
@@ -474,23 +493,27 @@ window.EMBEDDED_HISTORY = [
     async function loadData() {
       const ts = Date.now();
       try {
-        const [rebRes, histRes] = await Promise.all([
-          fetch(`./last_rebalance_report.json?t=${ts}`),
-          fetch(`./daily_history.json?t=${ts}`)
-        ]);
-
-        const reb = await rebRes.json();
-        const hist = await histRes.json();
+        let reb = window.EMBEDDED_REBALANCE, hist = window.EMBEDDED_HISTORY;
+        try {
+          const [rebRes, histRes] = await Promise.all([
+            fetch(`./last_rebalance_report.json?t=${ts}`),
+            fetch(`./daily_history.json?t=${ts}`)
+          ]);
+          if (rebRes.ok && histRes.ok) {
+            reb = await rebRes.json();
+            hist = await histRes.json();
+          }
+        } catch (e) {}
 
         const latestDay = hist[hist.length - 1] || {};
+        const costBasisTotal = Number(latestDay.initial_cost_usd || 10002.63);
         const trackedTotal = Number(reb.total_tracked_equity_usd || latestDay.tracked_total_usd || 0);
-        const acctTotal = Number(latestDay.account_equity_usd || (trackedTotal + 38333.11));
-        const dailyPl = Number(latestDay.daily_pl_usd || 0);
-        const dailyPlPct = Number(latestDay.daily_pl_pct || 0);
-        const totalPl = Number(latestDay.total_pl_usd || 0);
-        const totalPlPct = Number(latestDay.total_pl_pct || 0);
+        const dailyPl = Number(latestDay.daily_pl_usd ?? (trackedTotal - costBasisTotal));
+        const dailyPlPct = Number(latestDay.daily_pl_pct ?? ((dailyPl / costBasisTotal) * 100));
+        const totalPl = Number(latestDay.total_pl_usd ?? (trackedTotal - costBasisTotal));
+        const totalPlPct = Number(latestDay.total_pl_pct ?? ((totalPl / costBasisTotal) * 100));
 
-        document.getElementById("hud-account").textContent = fmtUsd(acctTotal);
+        document.getElementById("hud-cost").textContent = fmtUsd(costBasisTotal);
         document.getElementById("hud-tracked").textContent = fmtUsd(trackedTotal);
 
         const dailyEl = document.getElementById("hud-daily-pl");
@@ -506,10 +529,11 @@ window.EMBEDDED_HISTORY = [
         dailyTbody.innerHTML = [...hist].reverse().map(row => {
           const dClass = row.daily_pl_usd >= 0 ? "pos" : "neg";
           const tClass = row.total_pl_usd >= 0 ? "pos" : "neg";
+          const rowCost = row.initial_cost_usd || 10002.63;
           return `
             <tr>
               <td>${row.date}</td>
-              <td class="num">${fmtUsd(row.account_equity_usd)}</td>
+              <td class="num">${fmtUsd(rowCost)}</td>
               <td class="num">${fmtUsd(row.tracked_total_usd)}</td>
               <td class="num ${dClass}">${fmtUsd(row.daily_pl_usd, true)}</td>
               <td class="num ${dClass}">${fmtPct(row.daily_pl_pct)}</td>
@@ -518,11 +542,12 @@ window.EMBEDDED_HISTORY = [
           `;
         }).join("");
 
-        // Populate Active Party Table
+        // Populate Active Party Table (Managed 10 positions only)
         const party = (reb.portfolio_snapshot || []).slice().sort((a, b) => b.equity_usd - a.equity_usd);
         const partyTbody = document.getElementById("party-tbody");
         partyTbody.innerHTML = party.map(p => {
-          const pClass = p.total_return_pct >= 0 ? "pos" : "neg";
+          const plUsd = p.pl_usd !== undefined ? p.pl_usd : (p.equity_usd - (p.cost_basis_usd || 1000));
+          const pClass = plUsd >= 0 ? "pos" : "neg";
           const isCore = p.bucket === "core_tech";
           const hpPct = Math.max(10, Math.min(100, Math.round((p.score / 120) * 100)));
           const hpColor = p.score >= 85 ? "#00e800" : (p.score >= 65 ? "#f8d820" : "#f83800");
@@ -531,9 +556,10 @@ window.EMBEDDED_HISTORY = [
               <td style="color: var(--accent);">${p.symbol}</td>
               <td><span class="tag ${isCore ? 'tag-core' : 'tag-emerging'}">${isCore ? 'CORE' : 'NEXT-GEN'}</span></td>
               <td class="num">${fmtUsd(p.price)}</td>
-              <td class="num">${Number(p.quantity).toFixed(3)}</td>
+              <td class="num">${Number(p.quantity).toFixed(2)}</td>
+              <td class="num">${fmtUsd(p.cost_basis_usd || 1000)}</td>
               <td class="num">${fmtUsd(p.equity_usd)}</td>
-              <td class="num ${pClass}">${fmtPct(p.total_return_pct)}</td>
+              <td class="num ${pClass}">${fmtUsd(plUsd, true)} (${fmtPct(p.total_return_pct)})</td>
               <td class="num">
                 <div class="hp-bar-outer"><div class="hp-bar-inner" style="width:${hpPct}%; background:${hpColor};"></div></div>
                 ${Number(p.score).toFixed(0)}
