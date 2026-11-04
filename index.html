@@ -3,26 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BATTLETOADS PORTFOLIO // RARE 1991 NES</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>Money</title>
   <style>
-    :root {
-      --bg: #080010;
-      --canyon-dark: #2c003e;
-      --canyon-mid: #58006c;
-      --toad-green: #58f858;
-      --rash-green: #00e800;
-      --zitz-cyan: #3cbcfc;
-      --pimple-orange: #fc9838;
-      --queen-magenta: #f838b8;
-      --gold: #f8d820;
-      --danger: #f83800;
-      --white: #fcfcfc;
-      --panel: #140424;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -30,514 +12,147 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--white);
-      font-family: 'Press Start 2P', monospace;
-      font-size: 11px;
-      line-height: 1.6;
-      padding: 0 0 60px;
-      image-rendering: pixelated;
-      /* Ragnarok's Canyon / Turbo Tunnel scrolling grid backdrop */
-      background-image:
-        linear-gradient(180deg, #080010 0%, #240038 45%, #480058 75%, #12001c 100%),
-        repeating-linear-gradient(90deg, rgba(248, 56, 184, 0.12) 0px, rgba(248, 56, 184, 0.12) 2px, transparent 2px, transparent 32px);
-      background-attachment: fixed;
+      background: #ffffff;
+      color: #111111;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.5;
+      padding: 32px 20px;
     }
 
-    /* NES CRT scanlines */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0px,
-        rgba(0, 0, 0, 0) 2px,
-        rgba(0, 0, 0, 0.32) 3px,
-        rgba(0, 0, 0, 0.32) 4px
-      );
-      pointer-events: none;
-      z-index: 999;
-    }
-
-    /* Top NES Battletoads Arcade HUD Bar */
-    .top-hud-bar {
-      background: #000000;
-      border-bottom: 4px solid var(--toad-green);
-      padding: 12px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 6px 0 #000;
-    }
-
-    .top-hud-inner {
-      max-width: 1040px;
+    .wrap {
+      max-width: 720px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      align-items: center;
     }
 
-    .toad-slot {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #100818;
-      border: 3px solid var(--white);
-      padding: 8px 10px;
+    h1 {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-bottom: 1px solid #111111;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
     }
 
-    .toad-avatar {
-      width: 36px;
-      height: 36px;
-      flex-shrink: 0;
-      border: 2px solid var(--white);
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .toad-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .toad-name {
-      font-size: 9px;
-      margin-bottom: 4px;
-      display: block;
-    }
-
-    .pips-row {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 5px;
-    }
-
-    .pip {
-      width: 10px;
-      height: 10px;
-      background: var(--danger);
-      border: 2px solid var(--white);
-      display: inline-block;
-    }
-
-    .pip.green { background: var(--rash-green); }
-    .pip.gold { background: var(--gold); }
-
-    .toad-score {
+    h2 {
       font-size: 12px;
-      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 28px 0 8px;
+      color: #333333;
     }
 
-    .container {
-      max-width: 1040px;
-      margin: 22px auto 0;
-      padding: 0 16px;
-    }
-
-    /* Battletoads Title Banner + Professor T. Bird Briefing */
-    .title-banner {
-      background: linear-gradient(180deg, #180028 0%, #080010 100%);
-      border: 4px solid var(--toad-green);
-      box-shadow:
-        inset -4px -4px 0px #007800,
-        inset 4px 4px 0px #b8f8b8,
-        8px 8px 0px #000000;
-      padding: 20px;
-      margin-bottom: 20px;
-      text-align: center;
-      position: relative;
-    }
-
-    .bt-logo {
-      font-size: 24px;
-      color: var(--toad-green);
-      text-shadow:
-        3px 3px 0px #007800,
-        6px 6px 0px #000000;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .bt-sub {
-      color: var(--pimple-orange);
-      font-size: 10px;
-      text-shadow: 2px 2px 0 #000;
-    }
-
-    /* Professor T. Bird Vulture Spaceship Dialog */
-    .tbird-box {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: #000000;
-      border: 4px solid var(--pimple-orange);
-      box-shadow: 6px 6px 0 #000;
-      padding: 14px 16px;
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid #111111;
       margin-bottom: 24px;
     }
 
-    .tbird-portrait {
-      width: 56px;
-      height: 56px;
-      flex-shrink: 0;
-      border: 3px solid var(--white);
-      background: #200038;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .cell {
+      padding: 12px;
+      border-right: 1px solid #111111;
     }
 
-    .tbird-text {
-      font-size: 10px;
-      color: var(--white);
-      line-height: 1.7;
+    .cell:last-child {
+      border-right: none;
     }
 
-    .tbird-speaker {
-      color: var(--gold);
+    .label {
+      font-size: 11px;
+      color: #555555;
+      text-transform: uppercase;
       display: block;
       margin-bottom: 4px;
     }
 
-    /* NES Stage Frame */
-    .stage-box {
-      background: var(--panel);
-      border: 4px solid var(--white);
-      box-shadow:
-        inset -4px -4px 0px var(--canyon-mid),
-        inset 4px 4px 0px var(--queen-magenta),
-        8px 8px 0px #000000;
-      padding: 18px;
-      margin-bottom: 26px;
-    }
-
-    .stage-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 4px solid var(--toad-green);
-    }
-
-    .stage-title {
-      color: var(--toad-green);
-      font-size: 13px;
-      text-shadow: 2px 2px 0 #000;
-    }
-
-    .btn-toad {
-      background: var(--rash-green);
-      color: #000000;
-      font-family: 'Press Start 2P', monospace;
-      font-size: 10px;
-      border: 4px solid var(--white);
-      padding: 8px 12px;
-      cursor: pointer;
-      box-shadow: 4px 4px 0px #000;
-    }
-
-    .btn-toad:hover {
-      background: var(--gold);
-    }
-
-    .btn-toad:active {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0px #000;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
+    .val {
+      font-size: 16px;
+      font-weight: 700;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
+      border: 1px solid #111111;
       font-variant-numeric: tabular-nums;
     }
 
     th, td {
-      padding: 11px 8px;
+      padding: 8px 10px;
+      border-bottom: 1px solid #dddddd;
       text-align: left;
-      border-bottom: 2px dashed #4c1c6c;
-      white-space: nowrap;
     }
 
     th {
-      color: var(--gold);
-      font-size: 10px;
-      border-bottom: 4px solid var(--white);
-      background: #0c0018;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #444444;
+      border-bottom: 1px solid #111111;
+      background: #f5f5f5;
     }
 
-    td.num, th.num {
+    th.num, td.num {
       text-align: right;
     }
 
-    .pos {
-      color: var(--toad-green);
+    tr:last-child td {
+      border-bottom: none;
     }
 
-    .neg {
-      color: var(--danger);
-    }
-
-    .toad-badge {
-      display: inline-block;
-      padding: 3px 6px;
-      font-size: 9px;
-      border: 2px solid var(--white);
-      text-shadow: 1px 1px 0 #000;
-    }
-
-    .badge-rash {
-      background: #006800;
-      color: var(--toad-green);
-    }
-
-    .badge-zitz {
-      background: #58006c;
-      color: var(--gold);
-    }
-
-    /* Battletoads red/green 8-bit life pips */
-    .life-pips {
-      display: inline-flex;
-      gap: 2px;
-      vertical-align: middle;
-      margin-right: 6px;
-    }
-
-    .life-pip {
-      width: 7px;
-      height: 11px;
-      border: 1px solid #fff;
-      background: #282828;
-    }
-
-    .life-pip.on-green { background: var(--rash-green); }
-    .life-pip.on-gold { background: var(--gold); }
-    .life-pip.on-red { background: var(--danger); }
-
-    /* Turbo Tunnel speed bike animation strip */
-    .turbo-tunnel {
-      background: repeating-linear-gradient(
-        -45deg,
-        #240038,
-        #240038 16px,
-        #440060 16px,
-        #440060 32px
-      );
-      border: 4px solid var(--queen-magenta);
-      padding: 10px 14px;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 9px;
-      color: var(--gold);
-    }
-
-    .blink {
-      animation: blink-anim 0.9s steps(2, start) infinite;
-    }
-
-    @keyframes blink-anim {
-      to { visibility: hidden; }
-    }
-
-    .footer {
-      text-align: center;
-      color: #a888b8;
-      font-size: 9px;
-      margin-top: 20px;
+    .meta {
+      margin-top: 16px;
+      font-size: 11px;
+      color: #666666;
     }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <h1>Money</h1>
 
-  <!-- BATTLETOADS TOP ARCADE HUD (RASH, ZITZ, PIMPLE, DARK QUEEN) -->
-  <div class="top-hud-bar">
-    <div class="top-hud-inner">
-      <!-- 1UP: RASH (STARTING GOLD) -->
-      <div class="toad-slot">
-        <div class="toad-avatar" title="RASH">
-          <!-- 8-bit pixel Toad w/ cool black shades -->
-          <svg width="28" height="28" viewBox="0 0 8 8" shape-rendering="crispEdges">
-            <rect width="8" height="8" fill="#000"/>
-            <rect x="1" y="1" width="2" height="2" fill="#58f858"/>
-            <rect x="5" y="1" width="2" height="2" fill="#58f858"/>
-            <rect x="1" y="3" width="6" height="4" fill="#00e800"/>
-            <rect x="1" y="3" width="6" height="1" fill="#000000"/>
-            <rect x="1" y="3" width="2" height="2" fill="#f83800"/>
-            <rect x="5" y="3" width="2" height="2" fill="#f83800"/>
-            <rect x="2" y="6" width="4" height="1" fill="#fcfcfc"/>
-          </svg>
-        </div>
-        <div class="toad-info">
-          <span class="toad-name" style="color:var(--toad-green);">1UP RASH // START GOLD</span>
-          <div class="pips-row">
-            <span class="pip green"></span><span class="pip green"></span><span class="pip green"></span><span class="pip green"></span><span class="pip green"></span><span class="pip green"></span>
-          </div>
-          <div class="toad-score" id="hud-cost">$10,002.63</div>
-        </div>
+    <div class="summary">
+      <div class="cell">
+        <span class="label">Cash In</span>
+        <div class="val" id="sum-cash">$10,002.63</div>
       </div>
-
-      <!-- 2UP: ZITZ (DAILY TOTAL) -->
-      <div class="toad-slot">
-        <div class="toad-avatar" title="ZITZ">
-          <svg width="28" height="28" viewBox="0 0 8 8" shape-rendering="crispEdges">
-            <rect width="8" height="8" fill="#000"/>
-            <rect x="1" y="1" width="2" height="2" fill="#3cbcfc"/>
-            <rect x="5" y="1" width="2" height="2" fill="#3cbcfc"/>
-            <rect x="2" y="1" width="1" height="1" fill="#fcfcfc"/>
-            <rect x="5" y="1" width="1" height="1" fill="#fcfcfc"/>
-            <rect x="1" y="3" width="6" height="4" fill="#3cbcfc"/>
-            <rect x="2" y="5" width="4" height="1" fill="#000000"/>
-          </svg>
-        </div>
-        <div class="toad-info">
-          <span class="toad-name" style="color:var(--zitz-cyan);">2UP ZITZ // DAILY TOTAL</span>
-          <div class="pips-row">
-            <span class="pip gold"></span><span class="pip gold"></span><span class="pip gold"></span><span class="pip gold"></span><span class="pip gold"></span><span class="pip gold"></span>
-          </div>
-          <div class="toad-score" id="hud-tracked">$--</div>
-        </div>
+      <div class="cell">
+        <span class="label">Money Now</span>
+        <div class="val" id="sum-total">$--</div>
       </div>
-
-      <!-- 3UP: PIMPLE (DAILY PROFIT / LOSS) -->
-      <div class="toad-slot">
-        <div class="toad-avatar" title="PIMPLE">
-          <svg width="28" height="28" viewBox="0 0 8 8" shape-rendering="crispEdges">
-            <rect width="8" height="8" fill="#000"/>
-            <rect x="1" y="1" width="2" height="2" fill="#fc9838"/>
-            <rect x="5" y="1" width="2" height="2" fill="#fc9838"/>
-            <rect x="1" y="3" width="6" height="4" fill="#c84c0c"/>
-            <rect x="2" y="3" width="1" height="1" fill="#fcfcfc"/>
-            <rect x="5" y="3" width="1" height="1" fill="#fcfcfc"/>
-            <rect x="2" y="6" width="4" height="1" fill="#fcfcfc"/>
-          </svg>
-        </div>
-        <div class="toad-info">
-          <span class="toad-name" style="color:var(--pimple-orange);">PIMPLE // DAILY P/L</span>
-          <div class="toad-score" id="hud-daily-pl">$--</div>
-        </div>
-      </div>
-
-      <!-- BOSS: DARK QUEEN (TOTAL QUEST P/L) -->
-      <div class="toad-slot">
-        <div class="toad-avatar" title="DARK QUEEN">
-          <svg width="28" height="28" viewBox="0 0 8 8" shape-rendering="crispEdges">
-            <rect width="8" height="8" fill="#000"/>
-            <rect x="1" y="1" width="6" height="2" fill="#f838b8"/>
-            <rect x="2" y="3" width="4" height="4" fill="#fcfcfc"/>
-            <rect x="2" y="4" width="1" height="1" fill="#f83800"/>
-            <rect x="5" y="4" width="1" height="1" fill="#f83800"/>
-            <rect x="3" y="6" width="2" height="1" fill="#f838b8"/>
-          </svg>
-        </div>
-        <div class="toad-info">
-          <span class="toad-name" style="color:var(--queen-magenta);">TOTAL BATTLE P/L</span>
-          <div class="toad-score" id="hud-total-pl">$--</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <!-- BATTLETOADS LOGO BANNER -->
-    <div class="title-banner">
-      <div class="bt-logo">🐸 BATTLETOADS $10K PORTFOLIO 🐸</div>
-      <div class="bt-sub">
-        STAGE 3: TURBO TUNNEL AUTO-TRADER &nbsp;★&nbsp; 5 CORE TOADS + 5 NEXT-GEN TOADS
+      <div class="cell">
+        <span class="label">Profit / Loss</span>
+        <div class="val" id="sum-pl">$--</div>
       </div>
     </div>
 
-    <!-- PROFESSOR T. BIRD MISSION BRIEFING BOX -->
-    <div class="tbird-box">
-      <div class="tbird-portrait" title="PROFESSOR T. BIRD">
-        <svg width="42" height="42" viewBox="0 0 8 8" shape-rendering="crispEdges">
-          <rect width="8" height="8" fill="#200038"/>
-          <rect x="2" y="1" width="4" height="3" fill="#fcfcfc"/>
-          <rect x="4" y="3" width="3" height="2" fill="#f8d820"/>
-          <rect x="3" y="2" width="1" height="1" fill="#000000"/>
-          <rect x="1" y="5" width="6" height="3" fill="#f83800"/>
-        </svg>
-      </div>
-      <div class="tbird-text">
-        <span class="tbird-speaker">PROFESSOR T. BIRD SEZ:</span>
-        "LISTEN UP, ’TOADS! THE VULTURE CRUISER IS SCANNING YOUR 10 TECH POSITIONS EVERY HOUR! IF ANY STOCK BREAKS ITS 200-SMA SHIELD OR OVERHEATS PAST RSI 78, WE SMASH IT WITH A BIG BOOT AND ROTATE AUTOMATICALLY!"
-      </div>
-    </div>
+    <h2>Daily Total</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th class="num">Cash In</th>
+          <th class="num">Daily Total</th>
+          <th class="num">Profit / Loss</th>
+        </tr>
+      </thead>
+      <tbody id="daily-rows"></tbody>
+    </table>
 
-    <!-- TURBO TUNNEL STATUS BAR -->
-    <div class="turbo-tunnel">
-      <span>⚡ TURBO TUNNEL CLOUD ENGINE: ONLINE (HOURLY AUTO-REBALANCE)</span>
-      <span class="blink" id="last-updated">UPDATED: --</span>
-    </div>
+    <h2>Stocks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Stock</th>
+          <th class="num">Cash In</th>
+          <th class="num">Money Now</th>
+          <th class="num">Profit / Loss</th>
+        </tr>
+      </thead>
+      <tbody id="stock-rows"></tbody>
+    </table>
 
-    <!-- STAGE 1: DAILY TOTAL & PROFIT/LOSS LOG -->
-    <div class="stage-box">
-      <div class="stage-header">
-        <span class="stage-title">► WARP ZONE LOG: DAILY TOTAL &amp; PROFIT / LOSS</span>
-        <button class="btn-toad" onclick="loadData()">🤛 BIG BOOT REFRESH</button>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>DATE</th>
-              <th class="num">STARTING GOLD</th>
-              <th class="num">DAILY TOTAL</th>
-              <th class="num">PROFIT / LOSS ($)</th>
-              <th class="num">PROFIT / LOSS (%)</th>
-              <th class="num">TOTAL BATTLE P/L</th>
-            </tr>
-          </thead>
-          <tbody id="daily-tbody">
-            <tr><td colspan="6">LOADING BATTLE LOG...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- STAGE 2: 10 MANAGED POSITIONS -->
-    <div class="stage-box">
-      <div class="stage-header">
-        <span class="stage-title">► ACTIVE ’TOAD SQUAD (10 MANAGED POSITIONS)</span>
-        <span style="font-size: 9px; color: var(--gold);">BUDGET: $10,000.00 ($1,000 / FIGHTER)</span>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>FIGHTER</th>
-              <th>SQUAD</th>
-              <th class="num">PRICE</th>
-              <th class="num">SHARES</th>
-              <th class="num">COST BASIS</th>
-              <th class="num">DAILY TOTAL</th>
-              <th class="num">PROFIT / LOSS</th>
-              <th class="num">TOAD HP (SCORE)</th>
-            </tr>
-          </thead>
-          <tbody id="party-tbody">
-            <tr><td colspan="8">SUMMONING BATTLETOADS...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="footer">
-      © 1991 RARE / TRADEWEST • 2026 ANTIGRAVITY TURBO TUNNEL EDITION • MANAGED $10K PORTFOLIO ONLY
-    </div>
+    <div class="meta" id="updated-at"></div>
   </div>
 
   <script>window.EMBEDDED_REBALANCE = {
@@ -702,119 +317,77 @@ window.EMBEDDED_HISTORY = [
   }
 ];</script>
   <script>
-    function fmtUsd(val, signed = false) {
-      const n = Number(val || 0);
-      const sign = signed ? (n >= 0 ? "+" : "-") : (n < 0 ? "-" : "");
-      return sign + "$" + Math.abs(n).toLocaleString("en-US", {
+    function usd(n, signed = false) {
+      const v = Number(n || 0);
+      const s = signed ? (v >= 0 ? "+" : "-") : (v < 0 ? "-" : "");
+      return s + "$" + Math.abs(v).toLocaleString("en-US", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       });
     }
 
-    function fmtPct(val) {
-      const n = Number(val || 0);
-      const sign = n >= 0 ? "+" : "";
-      return sign + n.toFixed(2) + "%";
+    function pct(n) {
+      const v = Number(n || 0);
+      return (v >= 0 ? "+" : "") + v.toFixed(2) + "%";
     }
 
-    function buildLifePips(score) {
-      const filled = Math.max(1, Math.min(6, Math.round((score / 115) * 6)));
-      const cls = score >= 85 ? "on-green" : (score >= 65 ? "on-gold" : "on-red");
-      let html = '<span class="life-pips">';
-      for (let i = 0; i < 6; i++) {
-        html += `<span class="life-pip ${i < filled ? cls : ''}"></span>`;
-      }
-      html += '</span>';
-      return html;
-    }
-
-    async function loadData() {
+    async function load() {
       const ts = Date.now();
+      let reb = window.EMBEDDED_REBALANCE, hist = window.EMBEDDED_HISTORY;
       try {
-        let reb = window.EMBEDDED_REBALANCE, hist = window.EMBEDDED_HISTORY;
-        try {
-          const [rebRes, histRes] = await Promise.all([
-            fetch(`./last_rebalance_report.json?t=${ts}`),
-            fetch(`./daily_history.json?t=${ts}`)
-          ]);
-          if (rebRes.ok && histRes.ok) {
-            reb = await rebRes.json();
-            hist = await histRes.json();
-          }
-        } catch (e) {}
-
-        const latestDay = hist[hist.length - 1] || {};
-        const costBasisTotal = Number(latestDay.initial_cost_usd || 10002.63);
-        const trackedTotal = Number(reb.total_tracked_equity_usd || latestDay.tracked_total_usd || 0);
-        const dailyPl = Number(latestDay.daily_pl_usd ?? (trackedTotal - costBasisTotal));
-        const dailyPlPct = Number(latestDay.daily_pl_pct ?? ((dailyPl / costBasisTotal) * 100));
-        const totalPl = Number(latestDay.total_pl_usd ?? (trackedTotal - costBasisTotal));
-        const totalPlPct = Number(latestDay.total_pl_pct ?? ((totalPl / costBasisTotal) * 100));
-
-        document.getElementById("hud-cost").textContent = fmtUsd(costBasisTotal);
-        document.getElementById("hud-tracked").textContent = fmtUsd(trackedTotal);
-
-        const dailyEl = document.getElementById("hud-daily-pl");
-        dailyEl.textContent = `${fmtUsd(dailyPl, true)} (${fmtPct(dailyPlPct)})`;
-        dailyEl.className = "toad-score " + (dailyPl >= 0 ? "pos" : "neg");
-
-        const totalEl = document.getElementById("hud-total-pl");
-        totalEl.textContent = `${fmtUsd(totalPl, true)} (${fmtPct(totalPlPct)})`;
-        totalEl.className = "toad-score " + (totalPl >= 0 ? "pos" : "neg");
-
-        // Populate Daily Log Table
-        const dailyTbody = document.getElementById("daily-tbody");
-        dailyTbody.innerHTML = [...hist].reverse().map(row => {
-          const dClass = row.daily_pl_usd >= 0 ? "pos" : "neg";
-          const tClass = row.total_pl_usd >= 0 ? "pos" : "neg";
-          const rowCost = row.initial_cost_usd || 10002.63;
-          return `
-            <tr>
-              <td style="color:var(--gold);">${row.date}</td>
-              <td class="num">${fmtUsd(rowCost)}</td>
-              <td class="num">${fmtUsd(row.tracked_total_usd)}</td>
-              <td class="num ${dClass}">${fmtUsd(row.daily_pl_usd, true)}</td>
-              <td class="num ${dClass}">${fmtPct(row.daily_pl_pct)}</td>
-              <td class="num ${tClass}">${fmtUsd(row.total_pl_usd, true)} (${fmtPct(row.total_pl_pct)})</td>
-            </tr>
-          `;
-        }).join("");
-
-        // Populate 10 Managed Positions Table
-        const party = (reb.portfolio_snapshot || []).slice().sort((a, b) => b.equity_usd - a.equity_usd);
-        const partyTbody = document.getElementById("party-tbody");
-        partyTbody.innerHTML = party.map(p => {
-          const plUsd = p.pl_usd !== undefined ? p.pl_usd : (p.equity_usd - (p.cost_basis_usd || 1000));
-          const pClass = plUsd >= 0 ? "pos" : "neg";
-          const isCore = p.bucket === "core_tech";
-          return `
-            <tr>
-              <td style="color: var(--toad-green);">${p.symbol}</td>
-              <td><span class="toad-badge ${isCore ? 'badge-rash' : 'badge-zitz'}">${isCore ? 'RASH CORE' : 'ZITZ NEXT-GEN'}</span></td>
-              <td class="num">${fmtUsd(p.price)}</td>
-              <td class="num">${Number(p.quantity).toFixed(2)}</td>
-              <td class="num">${fmtUsd(p.cost_basis_usd || 1000)}</td>
-              <td class="num">${fmtUsd(p.equity_usd)}</td>
-              <td class="num ${pClass}">${fmtUsd(plUsd, true)} (${fmtPct(p.total_return_pct)})</td>
-              <td class="num">
-                ${buildLifePips(p.score)}
-                ${Number(p.score).toFixed(0)}
-              </td>
-            </tr>
-          `;
-        }).join("");
-
-        if (reb.timestamp) {
-          const dt = new Date(reb.timestamp);
-          document.getElementById("last-updated").textContent = "UPDATED: " + dt.toLocaleString();
+        const [r1, r2] = await Promise.all([
+          fetch(`./last_rebalance_report.json?t=${ts}`),
+          fetch(`./daily_history.json?t=${ts}`)
+        ]);
+        if (r1.ok && r2.ok) {
+          reb = await r1.json();
+          hist = await r2.json();
         }
-      } catch (err) {
-        console.error(err);
+      } catch (e) {}
+
+      const latest = hist[hist.length - 1] || {};
+      const cashIn = Number(latest.initial_cost_usd || 10002.63);
+      const totalNow = Number(reb.total_tracked_equity_usd || latest.tracked_total_usd || 0);
+      const plUsd = Number(latest.total_pl_usd ?? (totalNow - cashIn));
+      const plPct = Number(latest.total_pl_pct ?? ((plUsd / cashIn) * 100));
+
+      document.getElementById("sum-cash").textContent = usd(cashIn);
+      document.getElementById("sum-total").textContent = usd(totalNow);
+      document.getElementById("sum-pl").textContent = `${usd(plUsd, true)} (${pct(plPct)})`;
+
+      document.getElementById("daily-rows").innerHTML = [...hist].reverse().map(d => {
+        const c = d.initial_cost_usd || 10002.63;
+        return `
+          <tr>
+            <td>${d.date}</td>
+            <td class="num">${usd(c)}</td>
+            <td class="num">${usd(d.tracked_total_usd)}</td>
+            <td class="num">${usd(d.daily_pl_usd, true)} (${pct(d.daily_pl_pct)})</td>
+          </tr>
+        `;
+      }).join("");
+
+      const list = (reb.portfolio_snapshot || []).slice().sort((a, b) => b.equity_usd - a.equity_usd);
+      document.getElementById("stock-rows").innerHTML = list.map(s => {
+        const cost = s.cost_basis_usd || 1000;
+        const pl = s.pl_usd !== undefined ? s.pl_usd : (s.equity_usd - cost);
+        return `
+          <tr>
+            <td>${s.symbol}</td>
+            <td class="num">${usd(cost)}</td>
+            <td class="num">${usd(s.equity_usd)}</td>
+            <td class="num">${usd(pl, true)} (${pct(s.total_return_pct)})</td>
+          </tr>
+        `;
+      }).join("");
+
+      if (reb.timestamp) {
+        document.getElementById("updated-at").textContent = "Updated: " + new Date(reb.timestamp).toLocaleString();
       }
     }
 
-    loadData();
-    setInterval(loadData, 60000);
+    load();
+    setInterval(load, 60000);
   </script>
 </body>
 </html>
