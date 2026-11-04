@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROBINHOOD QUEST // 8-BIT PORTFOLIO TRACKER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --panel: #101028;
+      --border: #fcfcfc;
+      --accent: #f8d820;
+      --cyan: #3cbcfc;
+      --green: #00e800;
+      --red: #f83800;
+      --muted: #a4a4a4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--border);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 24px 16px 48px;
+      image-rendering: pixelated;
+      background-image:
+        radial-gradient(#ffffff 1px, transparent 1px),
+        radial-gradient(#3cbcfc 1px, transparent 1px);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+    }
+
+    /* Subtle CRT scanline effect */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0.25) 3px,
+        rgba(0, 0, 0, 0.25) 4px
+      );
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* Classic NES double-pixel frame */
+    .nes-box {
+      background: var(--panel);
+      border: 4px solid var(--border);
+      box-shadow:
+        inset -4px -4px 0px #505080,
+        inset 4px 4px 0px #9090c0,
+        6px 6px 0px #000000;
+      padding: 18px;
+      margin-bottom: 24px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .title {
+      color: var(--accent);
+      font-size: 20px;
+      text-shadow: 3px 3px 0px #c84c0c;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--cyan);
+      font-size: 10px;
+    }
+
+    .blink {
+      animation: blink-anim 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink-anim {
+      to { visibility: hidden; }
+    }
+
+    .hud-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .hud-card {
+      background: #080818;
+      border: 4px solid var(--border);
+      padding: 14px;
+      text-align: center;
+    }
+
+    .hud-label {
+      color: var(--cyan);
+      font-size: 10px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .hud-value {
+      font-size: 15px;
+      color: var(--accent);
+    }
+
+    .section-title {
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-variant-numeric: tabular-nums;
+    }
+
+    th, td {
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 2px dashed #404070;
+      white-space: nowrap;
+    }
+
+    th {
+      color: var(--cyan);
+      font-size: 10px;
+      border-bottom: 4px solid var(--border);
+    }
+
+    td.num, th.num {
+      text-align: right;
+    }
+
+    .pos {
+      color: var(--green);
+    }
+
+    .neg {
+      color: var(--red);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 6px;
+      font-size: 9px;
+      border: 2px solid var(--border);
+    }
+
+    .tag-core {
+      background: #1c3878;
+      color: #ffffff;
+    }
+
+    .tag-emerging {
+      background: #581878;
+      color: #f8d820;
+    }
+
+    .hp-bar-outer {
+      display: inline-block;
+      width: 72px;
+      height: 12px;
+      background: #282828;
+      border: 2px solid var(--border);
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    .hp-bar-inner {
+      height: 100%;
+      background: var(--green);
+    }
+
+    .btn-nes {
+      background: var(--accent);
+      color: #000000;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      border: 4px solid var(--border);
+      padding: 8px 12px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #000;
+    }
+
+    .btn-nes:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #000;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 9px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- NES TITLE BANNER -->
+    <div class="nes-box header">
+      <div class="title">★ ROBINHOOD QUEST 1986 ★</div>
+      <div class="subtitle">
+        PLAYER 1: RYNOLDA &nbsp;|&nbsp; MODE: AUTO-REBALANCE &nbsp;|&nbsp;
+        <span class="blink" id="status-lamp">● STAGE CLEAR</span>
+      </div>
+    </div>
+
+    <!-- TOP SCOREBOARD HUD -->
+    <div class="hud-grid">
+      <div class="hud-card">
+        <span class="hud-label">HIGH SCORE (ACCOUNT)</span>
+        <div class="hud-value" id="hud-account">$--</div>
+      </div>
+      <div class="hud-card">
+        <span class="hud-label">10-STOCK QUEST TOTAL</span>
+        <div class="hud-value" id="hud-tracked">$--</div>
+      </div>
+      <div class="hud-card">
+        <span class="hud-label">TODAY PROFIT / LOSS</span>
+        <div class="hud-value" id="hud-daily-pl">$--</div>
+      </div>
+      <div class="hud-card">
+        <span class="hud-label">TOTAL QUEST P/L</span>
+        <div class="hud-value" id="hud-total-pl">$--</div>
+      </div>
+    </div>
+
+    <!-- DAILY LOG TABLE (DAILY TOTAL & PROFIT/LOSS) -->
+    <div class="nes-box">
+      <div class="section-title">
+        <span>► STAGE LOG: DAILY TOTAL &amp; PROFIT/LOSS</span>
+        <button class="btn-nes" id="refresh-btn" onclick="loadData()">↻ INSERT COIN (REFRESH)</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>DATE</th>
+              <th class="num">ACCOUNT TOTAL</th>
+              <th class="num">10-STOCK TOTAL</th>
+              <th class="num">DAILY P/L ($)</th>
+              <th class="num">DAILY P/L (%)</th>
+              <th class="num">TOTAL P/L ($)</th>
+            </tr>
+          </thead>
+          <tbody id="daily-tbody">
+            <tr><td colspan="6">LOADING SAVE DATA...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ACTIVE PARTY: 10 STOCK POSITIONS -->
+    <div class="nes-box">
+      <div class="section-title">
+        <span>► ACTIVE PARTY (10 TECH CHAMPIONS)</span>
+        <span style="font-size: 9px; color: var(--muted);" id="last-updated">UPDATED: --</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>HERO</th>
+              <th>CLASS</th>
+              <th class="num">PRICE</th>
+              <th class="num">SHARES</th>
+              <th class="num">GOLD VALUE</th>
+              <th class="num">P/L (%)</th>
+              <th class="num">HP (SCORE)</th>
+            </tr>
+          </thead>
+          <tbody id="party-tbody">
+            <tr><td colspan="7">SUMMONING PARTY...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 1986-2026 ANTIGRAVITY CORP. ALL RIGHTS RESERVED. AUTO-UPDATES HOURLY VIA GITHUB ACTIONS.
+    </div>
+  </div>
+
+  <script>
+    function fmtUsd(val, signed = false) {
+      const n = Number(val || 0);
+      const sign = signed ? (n >= 0 ? "+" : "-") : (n < 0 ? "-" : "");
+      return sign + "$" + Math.abs(n).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function fmtPct(val) {
+      const n = Number(val || 0);
+      const sign = n >= 0 ? "+" : "";
+      return sign + n.toFixed(2) + "%";
+    }
+
+    async function loadData() {
+      const ts = Date.now();
+      try {
+        const [rebRes, histRes] = await Promise.all([
+          fetch(`./last_rebalance_report.json?t=${ts}`),
+          fetch(`./daily_history.json?t=${ts}`)
+        ]);
+
+        const reb = await rebRes.json();
+        const hist = await histRes.json();
+
+        const latestDay = hist[hist.length - 1] || {};
+        const trackedTotal = Number(reb.total_tracked_equity_usd || latestDay.tracked_total_usd || 0);
+        const acctTotal = Number(latestDay.account_equity_usd || (trackedTotal + 38333.11));
+        const dailyPl = Number(latestDay.daily_pl_usd || 0);
+        const dailyPlPct = Number(latestDay.daily_pl_pct || 0);
+        const totalPl = Number(latestDay.total_pl_usd || 0);
+        const totalPlPct = Number(latestDay.total_pl_pct || 0);
+
+        document.getElementById("hud-account").textContent = fmtUsd(acctTotal);
+        document.getElementById("hud-tracked").textContent = fmtUsd(trackedTotal);
+
+        const dailyEl = document.getElementById("hud-daily-pl");
+        dailyEl.textContent = `${fmtUsd(dailyPl, true)} (${fmtPct(dailyPlPct)})`;
+        dailyEl.className = "hud-value " + (dailyPl >= 0 ? "pos" : "neg");
+
+        const totalEl = document.getElementById("hud-total-pl");
+        totalEl.textContent = `${fmtUsd(totalPl, true)} (${fmtPct(totalPlPct)})`;
+        totalEl.className = "hud-value " + (totalPl >= 0 ? "pos" : "neg");
+
+        // Populate Daily Log Table (newest first)
+        const dailyTbody = document.getElementById("daily-tbody");
+        dailyTbody.innerHTML = [...hist].reverse().map(row => {
+          const dClass = row.daily_pl_usd >= 0 ? "pos" : "neg";
+          const tClass = row.total_pl_usd >= 0 ? "pos" : "neg";
+          return `
+            <tr>
+              <td>${row.date}</td>
+              <td class="num">${fmtUsd(row.account_equity_usd)}</td>
+              <td class="num">${fmtUsd(row.tracked_total_usd)}</td>
+              <td class="num ${dClass}">${fmtUsd(row.daily_pl_usd, true)}</td>
+              <td class="num ${dClass}">${fmtPct(row.daily_pl_pct)}</td>
+              <td class="num ${tClass}">${fmtUsd(row.total_pl_usd, true)} (${fmtPct(row.total_pl_pct)})</td>
+            </tr>
+          `;
+        }).join("");
+
+        // Populate Active Party Table
+        const party = (reb.portfolio_snapshot || []).slice().sort((a, b) => b.equity_usd - a.equity_usd);
+        const partyTbody = document.getElementById("party-tbody");
+        partyTbody.innerHTML = party.map(p => {
+          const pClass = p.total_return_pct >= 0 ? "pos" : "neg";
+          const isCore = p.bucket === "core_tech";
+          const hpPct = Math.max(10, Math.min(100, Math.round((p.score / 120) * 100)));
+          const hpColor = p.score >= 85 ? "#00e800" : (p.score >= 65 ? "#f8d820" : "#f83800");
+          return `
+            <tr>
+              <td style="color: var(--accent);">${p.symbol}</td>
+              <td><span class="tag ${isCore ? 'tag-core' : 'tag-emerging'}">${isCore ? 'CORE' : 'NEXT-GEN'}</span></td>
+              <td class="num">${fmtUsd(p.price)}</td>
+              <td class="num">${Number(p.quantity).toFixed(3)}</td>
+              <td class="num">${fmtUsd(p.equity_usd)}</td>
+              <td class="num ${pClass}">${fmtPct(p.total_return_pct)}</td>
+              <td class="num">
+                <div class="hp-bar-outer"><div class="hp-bar-inner" style="width:${hpPct}%; background:${hpColor};"></div></div>
+                ${Number(p.score).toFixed(0)}
+              </td>
+            </tr>
+          `;
+        }).join("");
+
+        if (reb.timestamp) {
+          const dt = new Date(reb.timestamp);
+          document.getElementById("last-updated").textContent = "UPDATED: " + dt.toLocaleString();
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadData();
+    setInterval(loadData, 60000);
+  </script>
+</body>
+</html>
