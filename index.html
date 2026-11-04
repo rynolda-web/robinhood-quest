@@ -17,7 +17,7 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 13px;
       line-height: 1.5;
-      padding: 32px 20px;
+      padding: 32px 20px 64px;
     }
 
     .wrap {
@@ -76,6 +76,7 @@
       border-collapse: collapse;
       border: 1px solid #111111;
       font-variant-numeric: tabular-nums;
+      margin-bottom: 16px;
     }
 
     th, td {
@@ -100,8 +101,14 @@
       border-bottom: none;
     }
 
+    .section-divider {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #111111;
+    }
+
     .meta {
-      margin-top: 16px;
+      margin-top: 20px;
       font-size: 11px;
       color: #666666;
     }
@@ -139,11 +146,12 @@
       <tbody id="daily-rows"></tbody>
     </table>
 
-    <h2>Stocks</h2>
+    <h2>Stocks ($10,000 Portfolio)</h2>
     <table>
       <thead>
         <tr>
           <th>Stock</th>
+          <th class="num">Price</th>
           <th class="num">Cash In</th>
           <th class="num">Money Now</th>
           <th class="num">Profit / Loss</th>
@@ -152,13 +160,49 @@
       <tbody id="stock-rows"></tbody>
     </table>
 
+    <!-- HIGH RISK SECTION ($1,000 UNDER-$10 PORTFOLIO) -->
+    <div class="section-divider">
+      <h1>High Risk Section ($1,000 Under-$10 Portfolio)</h1>
+
+      <div class="summary">
+        <div class="cell">
+          <span class="label">Cash In</span>
+          <div class="val" id="hr-cash">$1,000.00</div>
+        </div>
+        <div class="cell">
+          <span class="label">Money Now</span>
+          <div class="val" id="hr-total">$--</div>
+        </div>
+        <div class="cell">
+          <span class="label">Profit / Loss</span>
+          <div class="val" id="hr-pl">$--</div>
+        </div>
+      </div>
+
+      <h2>High Risk Stocks</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Stock</th>
+            <th class="num">Price</th>
+            <th class="num">Cash In</th>
+            <th class="num">Money Now</th>
+            <th class="num">Profit / Loss</th>
+          </tr>
+        </thead>
+        <tbody id="hr-rows"></tbody>
+      </table>
+    </div>
+
     <div class="meta" id="updated-at"></div>
   </div>
 
   <script>window.EMBEDDED_REBALANCE = {
-  "timestamp": "2026-11-04T23:08:54.363172+00:00",
+  "timestamp": "2026-11-04T23:33:58.358827+00:00",
   "status": "rebalance_checked",
-  "total_tracked_equity_usd": 9956.68,
+  "total_tracked_equity_usd": 9953.2,
+  "high_risk_cost_usd": 1000.0,
+  "high_risk_total_usd": 0.0,
   "rotations_executed": 0,
   "actions": [],
   "portfolio_snapshot": [
@@ -166,29 +210,29 @@
       "symbol": "AAPL",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.27,
-      "equity_usd": 990.1,
-      "pl_usd": -11.17,
+      "equity_usd": 990.48,
+      "pl_usd": -10.79,
       "quantity": 2.83,
-      "price": 349.86,
-      "total_return_pct": -1.12,
+      "price": 349.9922,
+      "total_return_pct": -1.08,
       "score": 113.15,
       "rsi_14": 41.7,
       "sma_200": 297.34,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "AMZN",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.11,
-      "equity_usd": 984.71,
-      "pl_usd": -16.4,
+      "equity_usd": 986.12,
+      "pl_usd": -14.99,
       "quantity": 3.71,
-      "price": 265.42,
-      "total_return_pct": -1.64,
+      "price": 265.8,
+      "total_return_pct": -1.5,
       "score": 102.26,
       "rsi_14": 48.7,
       "sma_200": 243.5,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "CDNS",
@@ -202,7 +246,7 @@
       "score": 86.94,
       "rsi_14": 47.3,
       "sma_200": 327.61,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "GRMN",
@@ -216,63 +260,63 @@
       "score": 109.28,
       "rsi_14": 40.7,
       "sma_200": 254.43,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "ISRG",
       "bucket": "emerging_tech",
       "cost_basis_usd": 999.47,
-      "equity_usd": 986.6,
-      "pl_usd": -12.87,
+      "equity_usd": 988.26,
+      "pl_usd": -11.21,
       "quantity": 2.06,
-      "price": 478.93,
-      "total_return_pct": -1.29,
+      "price": 479.74,
+      "total_return_pct": -1.12,
       "score": 96.64,
       "rsi_14": 58.6,
       "sma_200": 432.07,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "META",
       "bucket": "core_tech",
       "cost_basis_usd": 999.74,
-      "equity_usd": 992.22,
-      "pl_usd": -7.52,
+      "equity_usd": 990.86,
+      "pl_usd": -8.88,
       "quantity": 1.57,
-      "price": 631.99,
-      "total_return_pct": -0.75,
+      "price": 631.1185,
+      "total_return_pct": -0.89,
       "score": 66.85,
       "rsi_14": 37.0,
       "sma_200": 632.04,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "MSFT",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.98,
-      "equity_usd": 998.62,
-      "pl_usd": -2.36,
+      "equity_usd": 998.48,
+      "pl_usd": -2.5,
       "quantity": 1.8,
-      "price": 554.7865,
-      "total_return_pct": -0.24,
+      "price": 554.71,
+      "total_return_pct": -0.25,
       "score": 114.77,
       "rsi_14": 49.4,
       "sma_200": 438.48,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "PLTR",
       "bucket": "emerging_tech",
       "cost_basis_usd": 1000.04,
-      "equity_usd": 1005.28,
-      "pl_usd": 5.24,
+      "equity_usd": 1005.3,
+      "pl_usd": 5.26,
       "quantity": 5.84,
-      "price": 172.1366,
-      "total_return_pct": 0.52,
+      "price": 172.14,
+      "total_return_pct": 0.53,
       "score": 80.08,
       "rsi_14": 35.8,
       "sma_200": 153.6,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "SHOP",
@@ -286,34 +330,126 @@
       "score": 94.32,
       "rsi_14": 33.3,
       "sma_200": 129.81,
-      "hours_held": 4.8
+      "hours_held": 5.2
     },
     {
       "symbol": "TSM",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.49,
-      "equity_usd": 999.67,
-      "pl_usd": -0.82,
+      "equity_usd": 994.22,
+      "pl_usd": -6.27,
       "quantity": 2.52,
-      "price": 396.6933,
-      "total_return_pct": -0.08,
+      "price": 394.53,
+      "total_return_pct": -0.63,
       "score": 71.11,
       "rsi_14": 39.3,
       "sma_200": 400.76,
-      "hours_held": 4.8
+      "hours_held": 5.2
+    }
+  ],
+  "high_risk_snapshot": [
+    {
+      "symbol": "RUN",
+      "quantity": 0.0,
+      "price": 9.61,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "GRAB",
+      "quantity": 0.0,
+      "price": 3.35,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "WB",
+      "quantity": 0.0,
+      "price": 6.57,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "FINV",
+      "quantity": 0.0,
+      "price": 3.04,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "PAYO",
+      "quantity": 0.0,
+      "price": 7.16,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "BTG",
+      "quantity": 0.0,
+      "price": 5.06,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "BB",
+      "quantity": 0.0,
+      "price": 8.78,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "SNAP",
+      "quantity": 0.0,
+      "price": 5.27,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "RIG",
+      "quantity": 0.0,
+      "price": 5.46,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
+    },
+    {
+      "symbol": "OPFI",
+      "quantity": 0.0,
+      "price": 6.37,
+      "cost_basis_usd": 100.0,
+      "equity_usd": 0.0,
+      "pl_usd": -100.0,
+      "total_return_pct": -100.0
     }
   ]
 };
 window.EMBEDDED_HISTORY = [
   {
     "date": "2026-11-04",
-    "updated_at": "2026-11-04T23:08:54.364525+00:00",
+    "updated_at": "2026-11-04T23:33:58.381755+00:00",
     "initial_cost_usd": 10002.63,
-    "tracked_total_usd": 9956.68,
-    "daily_pl_usd": -45.95,
-    "daily_pl_pct": -0.46,
-    "total_pl_usd": -45.95,
-    "total_pl_pct": -0.46
+    "tracked_total_usd": 9953.2,
+    "daily_pl_usd": -49.43,
+    "daily_pl_pct": -0.49,
+    "total_pl_usd": -49.43,
+    "total_pl_pct": -0.49
   }
 ];</script>
   <script>
@@ -374,6 +510,32 @@ window.EMBEDDED_HISTORY = [
         return `
           <tr>
             <td>${s.symbol}</td>
+            <td class="num">${usd(s.price)}</td>
+            <td class="num">${usd(cost)}</td>
+            <td class="num">${usd(s.equity_usd)}</td>
+            <td class="num">${usd(pl, true)} (${pct(s.total_return_pct)})</td>
+          </tr>
+        `;
+      }).join("");
+
+      // Populate High Risk Section
+      const hrList = (reb.high_risk_snapshot || []).slice().sort((a, b) => b.equity_usd - a.equity_usd);
+      const hrCash = Number(reb.high_risk_cost_usd || 1000);
+      const hrTotal = Number(reb.high_risk_total_usd || hrList.reduce((acc, x) => acc + Number(x.equity_usd || 0), 0));
+      const hrPlUsd = hrTotal - hrCash;
+      const hrPlPct = hrCash ? (hrPlUsd / hrCash) * 100 : 0;
+
+      document.getElementById("hr-cash").textContent = usd(hrCash);
+      document.getElementById("hr-total").textContent = usd(hrTotal);
+      document.getElementById("hr-pl").textContent = `${usd(hrPlUsd, true)} (${pct(hrPlPct)})`;
+
+      document.getElementById("hr-rows").innerHTML = hrList.map(s => {
+        const cost = s.cost_basis_usd || 100;
+        const pl = s.pl_usd !== undefined ? s.pl_usd : (s.equity_usd - cost);
+        return `
+          <tr>
+            <td>${s.symbol}</td>
+            <td class="num">${usd(s.price)}</td>
             <td class="num">${usd(cost)}</td>
             <td class="num">${usd(s.equity_usd)}</td>
             <td class="num">${usd(pl, true)} (${pct(s.total_return_pct)})</td>
