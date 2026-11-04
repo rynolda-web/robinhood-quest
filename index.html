@@ -314,7 +314,148 @@
     </div>
   </div>
 
-  <script>
+  <script>window.EMBEDDED_REBALANCE = {
+  "timestamp": "2026-11-04T22:57:19.551004+00:00",
+  "status": "rebalance_checked",
+  "total_tracked_equity_usd": 11245.77,
+  "rotations_executed": 0,
+  "actions": [],
+  "portfolio_snapshot": [
+    {
+      "symbol": "AAPL",
+      "bucket": "core_tech",
+      "equity_usd": 990.53,
+      "quantity": 2.83,
+      "price": 350.01,
+      "total_return_pct": -1.07,
+      "score": 113.15,
+      "rsi_14": 41.7,
+      "sma_200": 297.34,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "AMZN",
+      "bucket": "core_tech",
+      "equity_usd": 1188.7,
+      "quantity": 4.474362,
+      "price": 265.67,
+      "total_return_pct": -0.77,
+      "score": 102.26,
+      "rsi_14": 48.7,
+      "sma_200": 243.5,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "CDNS",
+      "bucket": "emerging_tech",
+      "equity_usd": 998.99,
+      "quantity": 3.03,
+      "price": 329.7,
+      "total_return_pct": -0.07,
+      "score": 86.94,
+      "rsi_14": 47.3,
+      "sma_200": 327.61,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "GRMN",
+      "bucket": "emerging_tech",
+      "equity_usd": 991.78,
+      "quantity": 3.43,
+      "price": 289.15,
+      "total_return_pct": -0.87,
+      "score": 109.28,
+      "rsi_14": 40.7,
+      "sma_200": 254.43,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "ISRG",
+      "bucket": "emerging_tech",
+      "equity_usd": 986.6,
+      "quantity": 2.06,
+      "price": 478.93,
+      "total_return_pct": -1.29,
+      "score": 96.64,
+      "rsi_14": 58.6,
+      "sma_200": 432.07,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "META",
+      "bucket": "core_tech",
+      "equity_usd": 993.81,
+      "quantity": 1.57,
+      "price": 633.0,
+      "total_return_pct": -0.59,
+      "score": 66.85,
+      "rsi_14": 37.0,
+      "sma_200": 632.04,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "MSFT",
+      "bucket": "core_tech",
+      "equity_usd": 2074.05,
+      "quantity": 3.73528,
+      "price": 555.26,
+      "total_return_pct": 5.35,
+      "score": 114.77,
+      "rsi_14": 49.4,
+      "sma_200": 438.48,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "PLTR",
+      "bucket": "emerging_tech",
+      "equity_usd": 1008.42,
+      "quantity": 5.84,
+      "price": 172.6744,
+      "total_return_pct": 0.84,
+      "score": 80.08,
+      "rsi_14": 35.8,
+      "sma_200": 153.6,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "SHOP",
+      "bucket": "emerging_tech",
+      "equity_usd": 1013.32,
+      "quantity": 6.58,
+      "price": 154.0,
+      "total_return_pct": 1.35,
+      "score": 94.32,
+      "rsi_14": 33.3,
+      "sma_200": 129.81,
+      "hours_held": 4.6
+    },
+    {
+      "symbol": "TSM",
+      "bucket": "core_tech",
+      "equity_usd": 999.57,
+      "quantity": 2.52,
+      "price": 396.6535,
+      "total_return_pct": -0.09,
+      "score": 71.11,
+      "rsi_14": 39.3,
+      "sma_200": 400.76,
+      "hours_held": 4.6
+    }
+  ]
+};
+window.EMBEDDED_HISTORY = [
+  {
+    "date": "2026-11-04",
+    "updated_at": "2026-11-04T22:59:39.990857+00:00",
+    "account_equity_usd": 49569.15,
+    "tracked_total_usd": 11245.77,
+    "daily_pl_usd": -14.86,
+    "daily_pl_pct": -0.13,
+    "total_pl_usd": -14.86,
+    "total_pl_pct": -0.13
+  }
+];</script>
+<script>
     function fmtUsd(val, signed = false) {
       const n = Number(val || 0);
       const sign = signed ? (n >= 0 ? "+" : "-") : (n < 0 ? "-" : "");
