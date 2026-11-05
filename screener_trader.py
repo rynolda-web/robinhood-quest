@@ -673,12 +673,25 @@ def sync_embedded_html() -> None:
     if not reb_file.exists() or not DAILY_HISTORY_FILE.exists():
         return
     import re
-    reb_txt = reb_file.read_text(encoding="utf-8").strip()
+    all_trades_file = BASE_DIR / "all_trades_history.json"
+    trades_list = (
+        json.loads(all_trades_file.read_text(encoding="utf-8"))
+        if all_trades_file.exists()
+        else SYSTEM_TRADES_BASELINE
+    )
+    reb_obj = json.loads(reb_file.read_text(encoding="utf-8"))
+    if not reb_obj.get("system_trades"):
+        reb_obj["system_trades"] = trades_list
+        reb_file.write_text(json.dumps(reb_obj, indent=2), encoding="utf-8")
+
+    reb_txt = json.dumps(reb_obj, indent=2)
     hist_txt = DAILY_HISTORY_FILE.read_text(encoding="utf-8").strip()
+    trades_txt = json.dumps(reb_obj.get("system_trades", trades_list), indent=2)
     news_txt = json.dumps(fetch_latest_news(), indent=2)
     replacement = (
         f"<script>window.EMBEDDED_REBALANCE = {reb_txt};\n"
         f"window.EMBEDDED_HISTORY = {hist_txt};\n"
+        f"window.EMBEDDED_TRADES = {trades_txt};\n"
         f"window.EMBEDDED_NEWS = {news_txt};</script>"
     )
     for fname in ["index.html", "money.html"]:
