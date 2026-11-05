@@ -75,6 +75,8 @@ def fast_quote_refresh() -> dict:
     reb["high_risk_total_usd"] = round(sum(x["equity_usd"] for x in high_risk_snapshot), 2)
     reb["portfolio_snapshot"] = portfolio_snapshot
     reb["high_risk_snapshot"] = high_risk_snapshot
+    if not reb.get("system_trades"):
+        reb["system_trades"] = st.SYSTEM_TRADES_BASELINE
 
     reb_file.write_text(json.dumps(reb, indent=2), encoding="utf-8")
     st.update_daily_history(reb["total_tracked_equity_usd"])
