@@ -352,12 +352,16 @@
       <tbody id="daily-rows"></tbody>
     </table>
 
-    <h2>Stocks ($10,000 Portfolio)</h2>
+    <h2>
+      <span>Stocks ($10,000 Portfolio)</span>
+      <span class="sub-status" id="stocks-status">Auto-updates every 60s (Quant Screener: 10s)</span>
+    </h2>
     <table>
       <thead>
         <tr>
           <th>Stock</th>
           <th class="num">Price</th>
+          <th class="num">Quant Score</th>
           <th class="num">Cash In</th>
           <th class="num">Money Now</th>
           <th class="num">Profit / Loss</th>
@@ -416,11 +420,11 @@
   </div>
 
   <script>window.EMBEDDED_REBALANCE = {
-  "timestamp": "2026-11-05T00:00:18.768818+00:00",
+  "timestamp": "2026-11-05T00:31:56.602512+00:00",
   "status": "rebalance_checked",
-  "total_tracked_equity_usd": 9939.12,
+  "total_tracked_equity_usd": 9939.21,
   "high_risk_cost_usd": 1000.0,
-  "high_risk_total_usd": 988.63,
+  "high_risk_total_usd": 989.1,
   "rotations_executed": 0,
   "actions": [],
   "portfolio_snapshot": [
@@ -428,29 +432,39 @@
       "symbol": "AAPL",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.27,
-      "equity_usd": 990.58,
-      "pl_usd": -10.69,
+      "equity_usd": 994.15,
+      "pl_usd": -7.12,
       "quantity": 2.83,
-      "price": 350.0294,
-      "total_return_pct": -1.07,
-      "score": 113.15,
+      "price": 351.29,
+      "total_return_pct": -0.71,
+      "score": 122.85,
+      "sharpe_ratio": 0.8,
+      "sortino_ratio": 1.14,
+      "mom_12_1_pct": 23.5,
+      "max_drawdown_pct": -13.8,
+      "earnings_yield_pct": 2.71,
       "rsi_14": 41.7,
       "sma_200": 297.34,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "AMZN",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.11,
-      "equity_usd": 986.18,
-      "pl_usd": -14.93,
+      "equity_usd": 985.41,
+      "pl_usd": -15.7,
       "quantity": 3.71,
-      "price": 265.8179,
-      "total_return_pct": -1.49,
-      "score": 102.26,
+      "price": 265.61,
+      "total_return_pct": -1.57,
+      "score": 106.45,
+      "sharpe_ratio": 0.05,
+      "sortino_ratio": 0.08,
+      "mom_12_1_pct": 2.8,
+      "max_drawdown_pct": -20.5,
+      "earnings_yield_pct": 4.94,
       "rsi_14": 48.7,
       "sma_200": 243.5,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "CDNS",
@@ -461,10 +475,15 @@
       "quantity": 3.03,
       "price": 329.7,
       "total_return_pct": -0.07,
-      "score": 86.94,
+      "score": 88.9,
+      "sharpe_ratio": 0.03,
+      "sortino_ratio": 0.05,
+      "mom_12_1_pct": 7.9,
+      "max_drawdown_pct": -34.2,
+      "earnings_yield_pct": 1.55,
       "rsi_14": 47.3,
       "sma_200": 327.61,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "GRMN",
@@ -475,105 +494,140 @@
       "quantity": 3.43,
       "price": 289.15,
       "total_return_pct": -0.87,
-      "score": 109.28,
+      "score": 127.6,
+      "sharpe_ratio": 0.88,
+      "sortino_ratio": 1.55,
+      "mom_12_1_pct": 35.9,
+      "max_drawdown_pct": -15.6,
+      "earnings_yield_pct": 3.84,
       "rsi_14": 40.7,
       "sma_200": 254.43,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "ISRG",
       "bucket": "emerging_tech",
       "cost_basis_usd": 999.47,
-      "equity_usd": 988.26,
-      "pl_usd": -11.21,
+      "equity_usd": 985.71,
+      "pl_usd": -13.76,
       "quantity": 2.06,
-      "price": 479.74,
-      "total_return_pct": -1.12,
-      "score": 96.64,
+      "price": 478.5,
+      "total_return_pct": -1.38,
+      "score": 79.03,
+      "sharpe_ratio": -0.54,
+      "sortino_ratio": -0.71,
+      "mom_12_1_pct": -24.9,
+      "max_drawdown_pct": -44.0,
+      "earnings_yield_pct": 1.88,
       "rsi_14": 58.6,
       "sma_200": 432.07,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "META",
       "bucket": "core_tech",
       "cost_basis_usd": 999.74,
-      "equity_usd": 990.89,
-      "pl_usd": -8.85,
+      "equity_usd": 990.98,
+      "pl_usd": -8.76,
       "quantity": 1.57,
-      "price": 631.14,
-      "total_return_pct": -0.89,
-      "score": 66.85,
+      "price": 631.2,
+      "total_return_pct": -0.88,
+      "score": 77.15,
+      "sharpe_ratio": 0.08,
+      "sortino_ratio": 0.11,
+      "mom_12_1_pct": 17.8,
+      "max_drawdown_pct": -28.8,
+      "earnings_yield_pct": 4.72,
       "rsi_14": 37.0,
       "sma_200": 632.04,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "MSFT",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.98,
-      "equity_usd": 997.63,
-      "pl_usd": -3.35,
+      "equity_usd": 997.02,
+      "pl_usd": -3.96,
       "quantity": 1.8,
-      "price": 554.24,
-      "total_return_pct": -0.33,
-      "score": 114.77,
+      "price": 553.9,
+      "total_return_pct": -0.4,
+      "score": 107.53,
+      "sharpe_ratio": 0.07,
+      "sortino_ratio": 0.11,
+      "mom_12_1_pct": 2.9,
+      "max_drawdown_pct": -31.4,
+      "earnings_yield_pct": 3.68,
       "rsi_14": 49.4,
       "sma_200": 438.48,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "PLTR",
       "bucket": "emerging_tech",
       "cost_basis_usd": 1000.04,
-      "equity_usd": 999.98,
-      "pl_usd": -0.06,
+      "equity_usd": 1003.31,
+      "pl_usd": 3.27,
       "quantity": 5.84,
-      "price": 171.23,
-      "total_return_pct": -0.01,
-      "score": 80.08,
+      "price": 171.8,
+      "total_return_pct": 0.33,
+      "score": 74.53,
+      "sharpe_ratio": 0.08,
+      "sortino_ratio": 0.13,
+      "mom_12_1_pct": 0.7,
+      "max_drawdown_pct": -44.8,
+      "earnings_yield_pct": 0.81,
       "rsi_14": 35.8,
       "sma_200": 153.6,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "SHOP",
       "bucket": "emerging_tech",
       "cost_basis_usd": 999.86,
-      "equity_usd": 1004.35,
-      "pl_usd": 4.49,
+      "equity_usd": 1002.79,
+      "pl_usd": 2.93,
       "quantity": 6.58,
-      "price": 152.6365,
-      "total_return_pct": 0.45,
-      "score": 94.32,
+      "price": 152.4,
+      "total_return_pct": 0.29,
+      "score": 83.08,
+      "sharpe_ratio": 0.02,
+      "sortino_ratio": 0.02,
+      "mom_12_1_pct": 2.2,
+      "max_drawdown_pct": -44.2,
+      "earnings_yield_pct": 1.15,
       "rsi_14": 33.3,
       "sma_200": 129.81,
-      "hours_held": 5.7
+      "hours_held": 6.2
     },
     {
       "symbol": "TSM",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.49,
-      "equity_usd": 990.48,
-      "pl_usd": -10.01,
+      "equity_usd": 989.07,
+      "pl_usd": -11.42,
       "quantity": 2.52,
-      "price": 393.049,
-      "total_return_pct": -1.0,
-      "score": 71.11,
+      "price": 392.49,
+      "total_return_pct": -1.14,
+      "score": 104.2,
+      "sharpe_ratio": 0.9,
+      "sortino_ratio": 1.34,
+      "mom_12_1_pct": 64.0,
+      "max_drawdown_pct": -21.5,
+      "earnings_yield_pct": 3.84,
       "rsi_14": 39.3,
       "sma_200": 400.76,
-      "hours_held": 5.7
+      "hours_held": 6.2
     }
   ],
   "high_risk_snapshot": [
     {
       "symbol": "RUN",
       "quantity": 10.34,
-      "price": 9.58,
+      "price": 9.61,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.06,
-      "pl_usd": -0.94,
-      "total_return_pct": -0.94
+      "equity_usd": 99.36,
+      "pl_usd": -0.64,
+      "total_return_pct": -0.64
     },
     {
       "symbol": "GRAB",
@@ -614,29 +668,29 @@
     {
       "symbol": "BTG",
       "quantity": 19.53,
-      "price": 5.12,
+      "price": 5.14,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.99,
-      "pl_usd": -0.01,
-      "total_return_pct": -0.01
+      "equity_usd": 100.38,
+      "pl_usd": 0.38,
+      "total_return_pct": 0.38
     },
     {
       "symbol": "BB",
       "quantity": 11.39,
-      "price": 8.74,
+      "price": 8.72,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.55,
-      "pl_usd": -0.45,
-      "total_return_pct": -0.45
+      "equity_usd": 99.32,
+      "pl_usd": -0.68,
+      "total_return_pct": -0.68
     },
     {
       "symbol": "SNAP",
       "quantity": 18.69,
       "price": 5.21,
       "cost_basis_usd": 100.0,
-      "equity_usd": 97.37,
-      "pl_usd": -2.63,
-      "total_return_pct": -2.63
+      "equity_usd": 97.38,
+      "pl_usd": -2.62,
+      "total_return_pct": -2.62
     },
     {
       "symbol": "RIG",
@@ -661,12 +715,12 @@
 window.EMBEDDED_HISTORY = [
   {
     "date": "2026-11-04",
-    "updated_at": "2026-11-05T00:00:18.792360+00:00",
+    "updated_at": "2026-11-05T00:31:56.604023+00:00",
     "initial_cost_usd": 10002.63,
-    "tracked_total_usd": 9939.12,
-    "daily_pl_usd": -63.51,
+    "tracked_total_usd": 9939.21,
+    "daily_pl_usd": -63.42,
     "daily_pl_pct": -0.63,
-    "total_pl_usd": -63.51,
+    "total_pl_usd": -63.42,
     "total_pl_pct": -0.63
   }
 ];
@@ -937,25 +991,12 @@ window.EMBEDDED_NEWS = [
       track.innerHTML = cardsHtml.join("") + cardsHtml.join("");
     }
 
-    async function loadPortfolio() {
-      const ts = Date.now();
-      let reb = window.EMBEDDED_REBALANCE, hist = window.EMBEDDED_HISTORY;
-      try {
-        const [r1, r2] = await Promise.all([
-          fetch(`./last_rebalance_report.json?t=${ts}`),
-          fetch(`./daily_history.json?t=${ts}`)
-        ]);
-        if (r1.ok && r2.ok) {
-          reb = await r1.json();
-          hist = await r2.json();
-        }
-      } catch (e) {}
-
+    function renderPortfolio(reb, hist) {
       const latest = hist[hist.length - 1] || {};
       const cashIn = Number(latest.initial_cost_usd || 10002.63);
       const totalNow = Number(reb.total_tracked_equity_usd || latest.tracked_total_usd || 0);
-      const plUsd = Number(latest.total_pl_usd ?? (totalNow - cashIn));
-      const plPct = Number(latest.total_pl_pct ?? ((plUsd / cashIn) * 100));
+      const plUsd = totalNow - cashIn;
+      const plPct = cashIn ? (plUsd / cashIn) * 100 : 0;
 
       document.getElementById("sum-cash").textContent = usd(cashIn);
       document.getElementById("sum-total").textContent = usd(totalNow);
@@ -977,10 +1018,13 @@ window.EMBEDDED_NEWS = [
       document.getElementById("stock-rows").innerHTML = list.map(s => {
         const cost = s.cost_basis_usd || 1000;
         const pl = s.pl_usd !== undefined ? s.pl_usd : (s.equity_usd - cost);
+        const qScore = s.score !== undefined ? Number(s.score).toFixed(1) : "--";
+        const qTip = `Sharpe: ${s.sharpe_ratio ?? '--'} | Sortino: ${s.sortino_ratio ?? '--'} | 12-1M Mom: ${s.mom_12_1_pct ?? '--'}% | Max DD: ${s.max_drawdown_pct ?? '--'}%`;
         return `
-          <tr>
+          <tr title="${qTip}">
             <td>${s.symbol}</td>
             <td class="num">${usd(s.price)}</td>
+            <td class="num">${qScore}</td>
             <td class="num">${usd(cost)}</td>
             <td class="num">${usd(s.equity_usd)}</td>
             <td class="num">${usd(pl, true)} (${pct(s.total_return_pct)})</td>
@@ -1012,8 +1056,87 @@ window.EMBEDDED_NEWS = [
         `;
       }).join("");
 
+      const nowStr = new Date().toLocaleTimeString();
+      document.getElementById("stocks-status").textContent = `Updated ${nowStr} (Web: 60s | Quant Screener: 10s)`;
       if (reb.timestamp) {
         document.getElementById("updated-at").textContent = "Portfolio Updated: " + new Date(reb.timestamp).toLocaleString();
+      }
+    }
+
+    async function loadPortfolio() {
+      const ts = Date.now();
+      let reb = window.EMBEDDED_REBALANCE, hist = window.EMBEDDED_HISTORY;
+      try {
+        const [r1, r2] = await Promise.all([
+          fetch(`./last_rebalance_report.json?t=${ts}`),
+          fetch(`./daily_history.json?t=${ts}`)
+        ]);
+        if (r1.ok && r2.ok) {
+          reb = await r1.json();
+          hist = await r2.json();
+          window.EMBEDDED_REBALANCE = reb;
+          window.EMBEDDED_HISTORY = hist;
+        }
+      } catch (e) {}
+      renderPortfolio(reb, hist);
+    }
+
+    async function refreshLiveBrowserQuotes() {
+      await loadPortfolio();
+      const reb = window.EMBEDDED_REBALANCE;
+      const hist = window.EMBEDDED_HISTORY;
+      if (!reb) return;
+
+      const allItems = [...(reb.portfolio_snapshot || []), ...(reb.high_risk_snapshot || [])];
+      const symbols = [...new Set(allItems.map(x => x.symbol))];
+      const priceUpdates = {};
+
+      await Promise.all(symbols.map(async sym => {
+        try {
+          const yUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?interval=1m&range=1d`;
+          const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(yUrl)}`);
+          if (!res.ok) return;
+          const data = await res.json();
+          const meta = data?.chart?.result?.[0]?.meta;
+          const p = Number(meta?.regularMarketPrice || 0);
+          if (p > 0) priceUpdates[sym] = p;
+        } catch (e) {}
+      }));
+
+      if (Object.keys(priceUpdates).length > 0) {
+        for (const s of (reb.portfolio_snapshot || [])) {
+          if (priceUpdates[s.symbol]) {
+            s.price = priceUpdates[s.symbol];
+            s.equity_usd = Number((Number(s.quantity) * s.price).toFixed(2));
+            s.pl_usd = Number((s.equity_usd - Number(s.cost_basis_usd)).toFixed(2));
+            s.total_return_pct = Number(((s.pl_usd / Number(s.cost_basis_usd)) * 100).toFixed(2));
+          }
+        }
+        for (const s of (reb.high_risk_snapshot || [])) {
+          if (priceUpdates[s.symbol]) {
+            s.price = priceUpdates[s.symbol];
+            s.equity_usd = Number((Number(s.quantity) * s.price).toFixed(2));
+            s.pl_usd = Number((s.equity_usd - Number(s.cost_basis_usd)).toFixed(2));
+            s.total_return_pct = Number(((s.pl_usd / Number(s.cost_basis_usd)) * 100).toFixed(2));
+          }
+        }
+        reb.total_tracked_equity_usd = Number(
+          (reb.portfolio_snapshot || []).reduce((a, b) => a + Number(b.equity_usd || 0), 0).toFixed(2)
+        );
+        reb.high_risk_total_usd = Number(
+          (reb.high_risk_snapshot || []).reduce((a, b) => a + Number(b.equity_usd || 0), 0).toFixed(2)
+        );
+        reb.timestamp = new Date().toISOString();
+        if (hist && hist.length) {
+          const latest = hist[hist.length - 1];
+          const c = Number(latest.initial_cost_usd || 10002.63);
+          latest.tracked_total_usd = reb.total_tracked_equity_usd;
+          latest.daily_pl_usd = Number((reb.total_tracked_equity_usd - c).toFixed(2));
+          latest.daily_pl_pct = Number(((latest.daily_pl_usd / c) * 100).toFixed(2));
+          latest.total_pl_usd = latest.daily_pl_usd;
+          latest.total_pl_pct = latest.daily_pl_pct;
+        }
+        renderPortfolio(reb, hist);
       }
     }
 
@@ -1076,8 +1199,10 @@ window.EMBEDDED_NEWS = [
 
     loadCalendarTicker();
     loadPortfolio();
+    refreshLiveBrowserQuotes();
     loadNews();
-    setInterval(loadPortfolio, 60000);
+    setInterval(loadPortfolio, 10000);
+    setInterval(refreshLiveBrowserQuotes, 60000);
     setInterval(loadNews, 60000);
     setInterval(loadCalendarTicker, 60000);
   </script>
