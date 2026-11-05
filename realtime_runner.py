@@ -32,22 +32,28 @@ def fast_quote_refresh() -> dict:
     reb = json.loads(reb_file.read_text(encoding="utf-8")) if reb_file.exists() else {}
 
     # Update $10k Managed Portfolio prices & P/L
-    portfolio_snapshot = reb.get("portfolio_snapshot", [])
-    for item in portfolio_snapshot:
-        sym = item["symbol"]
-        info = st.MANAGED_POSITIONS.get(sym, {})
+    existing_items = {item["symbol"]: item for item in reb.get("portfolio_snapshot", [])}
+    portfolio_snapshot = []
+    for sym, info in st.MANAGED_POSITIONS.items():
+        item = existing_items.get(sym, {})
         price = q_map.get(sym, float(item.get("price", info.get("avg_price", 0.0))))
         qty = float(info.get("qty", item.get("quantity", 0.0)))
         cost = float(info.get("cost_basis", item.get("cost_basis_usd", 1000.0)))
         equity = round(qty * price, 2)
         pl_usd = round(equity - cost, 2)
         pl_pct = round((pl_usd / cost) * 100.0, 2) if cost else 0.0
-        item["price"] = round(price, 2)
-        item["quantity"] = qty
-        item["cost_basis_usd"] = round(cost, 2)
-        item["equity_usd"] = equity
-        item["pl_usd"] = pl_usd
-        item["total_return_pct"] = pl_pct
+        portfolio_snapshot.append({
+            "symbol": sym,
+            "quantity": qty,
+            "price": round(price, 2),
+            "cost_basis_usd": round(cost, 2),
+            "equity_usd": equity,
+            "pl_usd": pl_usd,
+            "total_return_pct": pl_pct,
+            "score": float(item.get("score", 75.0)),
+            "rsi_14": float(item.get("rsi_14", 50.0)),
+            "sma_200": float(item.get("sma_200", round(price, 2))),
+        })
 
     # Update $1k High Risk Portfolio prices & P/L
     high_risk_snapshot = []
