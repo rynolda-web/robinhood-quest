@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-11-05T16:01:56.004361+00:00",
+  "timestamp": "2026-11-05T16:02:15.995558+00:00",
   "status": "rebalance_checked",
   "total_tracked_equity_usd": 0,
   "high_risk_cost_usd": 1000.0,
-  "high_risk_total_usd": 953.5,
+  "high_risk_total_usd": 954.24,
   "rotations_executed": 0,
   "actions": [],
   "system_trades": [
@@ -1809,52 +1809,52 @@
     }
   ],
   "token_usage": {
-    "updated_at": "2026-11-05T16:01:56.046962+00:00",
+    "updated_at": "2026-11-05T16:02:16.042314+00:00",
     "primary_model": "Gemini (Argon & Flash)",
     "fleet_quota_tokens": 100000000,
-    "fleet_tokens_left": 23343973,
-    "fleet_tokens_left_pct": 23.34,
-    "session_tokens_left": 35807560,
-    "session_tokens_left_pct": 35.81,
+    "fleet_tokens_left": 23095409,
+    "fleet_tokens_left_pct": 23.1,
+    "session_tokens_left": 35558996,
+    "session_tokens_left_pct": 35.56,
     "all_models_context_limit": 3145728,
-    "all_models_context_left": 2898625,
-    "all_models_context_left_pct": 92.14,
+    "all_models_context_left": 2897431,
+    "all_models_context_left_pct": 92.11,
     "gemini_pro_context_limit": 2097152,
-    "gemini_pro_context_left": 1850049,
-    "gemini_pro_context_left_pct": 88.22,
+    "gemini_pro_context_left": 1848855,
+    "gemini_pro_context_left_pct": 88.16,
     "gemini_flash_context_limit": 1048576,
-    "gemini_flash_context_left": 801473,
-    "gemini_flash_context_left_pct": 76.43,
-    "latest_turn_context_tokens": 247103,
-    "session_total_tokens": 64192440,
-    "session_input_tokens": 5244204,
-    "session_output_tokens": 229211,
-    "session_cache_read_tokens": 58719025,
-    "session_requests": 449,
-    "all_conversations_total_tokens": 76656027,
-    "all_conversations_input_tokens": 6449034,
-    "all_conversations_output_tokens": 344834,
-    "all_conversations_cache_read_tokens": 69862159
+    "gemini_flash_context_left": 800279,
+    "gemini_flash_context_left_pct": 76.32,
+    "latest_turn_context_tokens": 248297,
+    "session_total_tokens": 64441004,
+    "session_input_tokens": 5247436,
+    "session_output_tokens": 229478,
+    "session_cache_read_tokens": 58964090,
+    "session_requests": 450,
+    "all_conversations_total_tokens": 76904591,
+    "all_conversations_input_tokens": 6452266,
+    "all_conversations_output_tokens": 345101,
+    "all_conversations_cache_read_tokens": 70107224
   },
   "portfolio_snapshot": [],
   "high_risk_snapshot": [
     {
       "symbol": "RUN",
       "quantity": 10.34,
-      "price": 9.16,
+      "price": 9.18,
       "cost_basis_usd": 100.0,
-      "equity_usd": 94.71,
-      "pl_usd": -5.29,
-      "total_return_pct": -5.29
+      "equity_usd": 94.92,
+      "pl_usd": -5.08,
+      "total_return_pct": -5.08
     },
     {
       "symbol": "GRAB",
       "quantity": 29.85,
       "price": 3.29,
       "cost_basis_usd": 100.0,
-      "equity_usd": 98.31,
-      "pl_usd": -1.69,
-      "total_return_pct": -1.69
+      "equity_usd": 98.36,
+      "pl_usd": -1.64,
+      "total_return_pct": -1.64
     },
     {
       "symbol": "WB",
@@ -1886,20 +1886,20 @@
     {
       "symbol": "BTG",
       "quantity": 19.53,
-      "price": 5.05,
+      "price": 5.06,
       "cost_basis_usd": 100.0,
-      "equity_usd": 98.63,
-      "pl_usd": -1.37,
-      "total_return_pct": -1.37
+      "equity_usd": 98.82,
+      "pl_usd": -1.18,
+      "total_return_pct": -1.18
     },
     {
       "symbol": "BB",
       "quantity": 11.39,
-      "price": 8.07,
+      "price": 8.1,
       "cost_basis_usd": 100.0,
-      "equity_usd": 91.97,
-      "pl_usd": -8.03,
-      "total_return_pct": -8.03
+      "equity_usd": 92.26,
+      "pl_usd": -7.74,
+      "total_return_pct": -7.74
     },
     {
       "symbol": "SNAP",
