@@ -75,6 +75,7 @@ def fast_quote_refresh() -> dict:
     reb["high_risk_total_usd"] = round(sum(x["equity_usd"] for x in high_risk_snapshot), 2)
     reb["portfolio_snapshot"] = portfolio_snapshot
     reb["high_risk_snapshot"] = high_risk_snapshot
+    reb["token_usage"] = st.get_token_usage_stats()
     all_trades_file = BASE_DIR / "all_trades_history.json"
     if all_trades_file.exists():
         try:
