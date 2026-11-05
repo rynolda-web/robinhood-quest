@@ -1,21 +1,276 @@
 {
-  "timestamp": "2026-11-05T00:31:56.602512+00:00",
+  "timestamp": "2026-11-05T00:38:27.094502+00:00",
   "status": "rebalance_checked",
-  "total_tracked_equity_usd": 9939.21,
+  "total_tracked_equity_usd": 9937.44,
   "high_risk_cost_usd": 1000.0,
-  "high_risk_total_usd": 989.1,
+  "high_risk_total_usd": 988.56,
   "rotations_executed": 0,
   "actions": [],
+  "system_trades": [
+    {
+      "id": "6aebc071-e50e-4eec-8fb4-6601ebff2bfa",
+      "symbol": "OPFI",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 14.93,
+      "price": 6.7,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:32:01Z"
+    },
+    {
+      "id": "6aebc06f-356d-4910-b56f-4cc89254c44e",
+      "symbol": "RIG",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 18.18,
+      "price": 5.5,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:59Z"
+    },
+    {
+      "id": "6aebc06e-58ec-4218-a8b7-84577d4fa5c1",
+      "symbol": "SNAP",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 18.69,
+      "price": 5.35,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:58Z"
+    },
+    {
+      "id": "6aebc06c-b8bd-4090-8586-b2810bca55de",
+      "symbol": "BB",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 11.39,
+      "price": 8.78,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:56Z"
+    },
+    {
+      "id": "6aebc06b-266c-49fd-80ab-12ccc0d30f6e",
+      "symbol": "BTG",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 19.53,
+      "price": 5.12,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:55Z"
+    },
+    {
+      "id": "6aebc069-72de-4a87-b8ac-9e36b2262fc2",
+      "symbol": "PAYO",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 13.89,
+      "price": 7.2,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:53Z"
+    },
+    {
+      "id": "6aebc067-b6c4-481a-933e-8e8d6d83042c",
+      "symbol": "FINV",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 32.57,
+      "price": 3.07,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:51Z"
+    },
+    {
+      "id": "6aebc066-f191-4c51-a72a-f224cd9d3725",
+      "symbol": "WB",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 15.22,
+      "price": 6.57,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:50Z"
+    },
+    {
+      "id": "6aebc064-4c9f-4508-9ead-395d7a0c60f2",
+      "symbol": "GRAB",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 29.85,
+      "price": 3.35,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:48Z"
+    },
+    {
+      "id": "6aebc063-ad04-47c1-b397-3ff7e479fba7",
+      "symbol": "RUN",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 10.34,
+      "price": 9.67,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:47Z"
+    },
+    {
+      "id": "6aeb9afa-c966-44f5-8aef-67417b174b0c",
+      "symbol": "URG",
+      "side": "SELL",
+      "portfolio": "Legacy Cleanup",
+      "state": "FILLED",
+      "qty": 77.82,
+      "price": 0.75,
+      "total_usd": 58.44,
+      "created_at": "2026-11-04T20:52:10Z"
+    },
+    {
+      "id": "6aeb9af8-bc31-4e68-8680-253ad1cf6329",
+      "symbol": "HIVE",
+      "side": "SELL",
+      "portfolio": "Legacy Cleanup",
+      "state": "FILLED",
+      "qty": 31.35,
+      "price": 1.81,
+      "total_usd": 56.9,
+      "created_at": "2026-11-04T20:52:08Z"
+    },
+    {
+      "id": "6aeb9af6-07a3-48bd-95ac-38cf8054163a",
+      "symbol": "AVGO",
+      "side": "SELL",
+      "portfolio": "Legacy Cleanup",
+      "state": "FILLED",
+      "qty": 0.5898,
+      "price": 325.12,
+      "total_usd": 191.76,
+      "created_at": "2026-11-04T20:52:06Z"
+    },
+    {
+      "id": "6aeb775a-79a8-447d-88e3-f4281fd9b8ab",
+      "symbol": "PLTR",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 5.84,
+      "price": 171.24,
+      "total_usd": 1000.04,
+      "created_at": "2026-11-04T18:20:10Z"
+    },
+    {
+      "id": "6aeb7759-4432-434b-a06a-f8e858854863",
+      "symbol": "SHOP",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 6.58,
+      "price": 151.96,
+      "total_usd": 999.86,
+      "created_at": "2026-11-04T18:20:09Z"
+    },
+    {
+      "id": "6aeb7757-f26e-45bf-9050-bcb9e6f7257c",
+      "symbol": "CDNS",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 3.03,
+      "price": 329.94,
+      "total_usd": 999.72,
+      "created_at": "2026-11-04T18:20:07Z"
+    },
+    {
+      "id": "6aeb7755-6a7f-48b1-8e63-137d234a8291",
+      "symbol": "ISRG",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 2.06,
+      "price": 485.18,
+      "total_usd": 999.47,
+      "created_at": "2026-11-04T18:20:05Z"
+    },
+    {
+      "id": "6aeb7753-f801-432e-be60-b3fa7d2e96bb",
+      "symbol": "GRMN",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 3.43,
+      "price": 291.69,
+      "total_usd": 1000.5,
+      "created_at": "2026-11-04T18:20:03Z"
+    },
+    {
+      "id": "6aeb7751-e5d3-4612-af75-ebbe0dba9863",
+      "symbol": "TSM",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 2.52,
+      "price": 397.02,
+      "total_usd": 1000.49,
+      "created_at": "2026-11-04T18:20:01Z"
+    },
+    {
+      "id": "6aeb7750-12a0-4f03-b1ab-3d1294dba0ff",
+      "symbol": "META",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 1.57,
+      "price": 636.78,
+      "total_usd": 999.74,
+      "created_at": "2026-11-04T18:20:00Z"
+    },
+    {
+      "id": "6aeb774e-ba96-41d2-819d-af4b4f598b0b",
+      "symbol": "AMZN",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 3.71,
+      "price": 269.84,
+      "total_usd": 1001.11,
+      "created_at": "2026-11-04T18:19:58Z"
+    },
+    {
+      "id": "6aeb774c-a492-44d9-b401-61ad86a98db9",
+      "symbol": "AAPL",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 2.83,
+      "price": 353.81,
+      "total_usd": 1001.27,
+      "created_at": "2026-11-04T18:19:56Z"
+    },
+    {
+      "id": "6aeb774b-c40c-4c97-a179-496e34e39a36",
+      "symbol": "MSFT",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 1.8,
+      "price": 556.1,
+      "total_usd": 1000.98,
+      "created_at": "2026-11-04T18:19:55Z"
+    }
+  ],
   "portfolio_snapshot": [
     {
       "symbol": "AAPL",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.27,
-      "equity_usd": 994.15,
-      "pl_usd": -7.12,
+      "equity_usd": 993.33,
+      "pl_usd": -7.94,
       "quantity": 2.83,
-      "price": 351.29,
-      "total_return_pct": -0.71,
+      "price": 350.9984,
+      "total_return_pct": -0.79,
       "score": 122.85,
       "sharpe_ratio": 0.8,
       "sortino_ratio": 1.14,
@@ -24,17 +279,17 @@
       "earnings_yield_pct": 2.71,
       "rsi_14": 41.7,
       "sma_200": 297.34,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "AMZN",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.11,
-      "equity_usd": 985.41,
-      "pl_usd": -15.7,
+      "equity_usd": 985.08,
+      "pl_usd": -16.03,
       "quantity": 3.71,
-      "price": 265.61,
-      "total_return_pct": -1.57,
+      "price": 265.5201,
+      "total_return_pct": -1.6,
       "score": 106.45,
       "sharpe_ratio": 0.05,
       "sortino_ratio": 0.08,
@@ -43,7 +298,7 @@
       "earnings_yield_pct": 4.94,
       "rsi_14": 48.7,
       "sma_200": 243.5,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "CDNS",
@@ -62,7 +317,7 @@
       "earnings_yield_pct": 1.55,
       "rsi_14": 47.3,
       "sma_200": 327.61,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "GRMN",
@@ -81,7 +336,7 @@
       "earnings_yield_pct": 3.84,
       "rsi_14": 40.7,
       "sma_200": 254.43,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "ISRG",
@@ -100,16 +355,16 @@
       "earnings_yield_pct": 1.88,
       "rsi_14": 58.6,
       "sma_200": 432.07,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "META",
       "bucket": "core_tech",
       "cost_basis_usd": 999.74,
-      "equity_usd": 990.98,
-      "pl_usd": -8.76,
+      "equity_usd": 990.92,
+      "pl_usd": -8.82,
       "quantity": 1.57,
-      "price": 631.2,
+      "price": 631.1591,
       "total_return_pct": -0.88,
       "score": 77.15,
       "sharpe_ratio": 0.08,
@@ -119,17 +374,17 @@
       "earnings_yield_pct": 4.72,
       "rsi_14": 37.0,
       "sma_200": 632.04,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "MSFT",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.98,
-      "equity_usd": 997.02,
-      "pl_usd": -3.96,
+      "equity_usd": 997.56,
+      "pl_usd": -3.42,
       "quantity": 1.8,
-      "price": 553.9,
-      "total_return_pct": -0.4,
+      "price": 554.2,
+      "total_return_pct": -0.34,
       "score": 107.53,
       "sharpe_ratio": 0.07,
       "sortino_ratio": 0.11,
@@ -138,17 +393,17 @@
       "earnings_yield_pct": 3.68,
       "rsi_14": 49.4,
       "sma_200": 438.48,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "PLTR",
       "bucket": "emerging_tech",
       "cost_basis_usd": 1000.04,
-      "equity_usd": 1003.31,
-      "pl_usd": 3.27,
+      "equity_usd": 1002.73,
+      "pl_usd": 2.69,
       "quantity": 5.84,
-      "price": 171.8,
-      "total_return_pct": 0.33,
+      "price": 171.7,
+      "total_return_pct": 0.27,
       "score": 74.53,
       "sharpe_ratio": 0.08,
       "sortino_ratio": 0.13,
@@ -157,7 +412,7 @@
       "earnings_yield_pct": 0.81,
       "rsi_14": 35.8,
       "sma_200": 153.6,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "SHOP",
@@ -176,17 +431,17 @@
       "earnings_yield_pct": 1.15,
       "rsi_14": 33.3,
       "sma_200": 129.81,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "TSM",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.49,
-      "equity_usd": 989.07,
-      "pl_usd": -11.42,
+      "equity_usd": 988.55,
+      "pl_usd": -11.94,
       "quantity": 2.52,
-      "price": 392.49,
-      "total_return_pct": -1.14,
+      "price": 392.28,
+      "total_return_pct": -1.19,
       "score": 104.2,
       "sharpe_ratio": 0.9,
       "sortino_ratio": 1.34,
@@ -195,27 +450,27 @@
       "earnings_yield_pct": 3.84,
       "rsi_14": 39.3,
       "sma_200": 400.76,
-      "hours_held": 6.2
+      "hours_held": 6.3
     }
   ],
   "high_risk_snapshot": [
     {
       "symbol": "RUN",
       "quantity": 10.34,
-      "price": 9.61,
+      "price": 9.6,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.36,
-      "pl_usd": -0.64,
-      "total_return_pct": -0.64
+      "equity_usd": 99.24,
+      "pl_usd": -0.76,
+      "total_return_pct": -0.76
     },
     {
       "symbol": "GRAB",
       "quantity": 29.85,
-      "price": 3.35,
+      "price": 3.34,
       "cost_basis_usd": 100.0,
-      "equity_usd": 100.0,
-      "pl_usd": 0.0,
-      "total_return_pct": 0.0
+      "equity_usd": 99.7,
+      "pl_usd": -0.3,
+      "total_return_pct": -0.3
     },
     {
       "symbol": "WB",
@@ -256,20 +511,20 @@
     {
       "symbol": "BB",
       "quantity": 11.39,
-      "price": 8.72,
+      "price": 8.71,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.32,
-      "pl_usd": -0.68,
-      "total_return_pct": -0.68
+      "equity_usd": 99.21,
+      "pl_usd": -0.79,
+      "total_return_pct": -0.79
     },
     {
       "symbol": "SNAP",
       "quantity": 18.69,
       "price": 5.21,
       "cost_basis_usd": 100.0,
-      "equity_usd": 97.38,
-      "pl_usd": -2.62,
-      "total_return_pct": -2.62
+      "equity_usd": 97.37,
+      "pl_usd": -2.63,
+      "total_return_pct": -2.63
     },
     {
       "symbol": "RIG",
