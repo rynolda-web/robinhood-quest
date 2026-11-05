@@ -16,6 +16,7 @@ load_dotenv(BASE_DIR / ".env")
 LEDGER_FILE = BASE_DIR / "portfolio_ledger.json"
 LAST_SCAN_FILE = BASE_DIR / "last_scan_report.json"
 DAILY_HISTORY_FILE = BASE_DIR / "daily_history.json"
+TOKEN_USAGE_FILE = BASE_DIR / "token_usage.json"
 PORTFOLIO_BASELINE_USD = 10002.63  # Exact initial fill cost of the 10 managed $1,000 positions
 
 # Managed shares & fill prices for the $10,000 portfolio (excludes pre-existing MSFT/AMZN shares)
@@ -573,6 +574,8 @@ def rebalance_portfolio(dry_run: bool = False) -> dict[str, Any]:
             t_copy["state"] = "FILLED"
         system_trades.append(t_copy)
 
+    token_usage = get_token_usage_stats()
+
     summary = {
         "timestamp": now_utc.isoformat(),
         "status": "rebalance_checked",
@@ -582,6 +585,7 @@ def rebalance_portfolio(dry_run: bool = False) -> dict[str, Any]:
         "rotations_executed": len([a for a in actions if a.get("action") == "rotated"]),
         "actions": actions,
         "system_trades": system_trades,
+        "token_usage": token_usage,
         "portfolio_snapshot": portfolio_snapshot,
         "high_risk_snapshot": high_risk_snapshot,
     }
@@ -667,6 +671,92 @@ def fetch_latest_news() -> list[dict[str, Any]]:
     return items[:25]
 
 
+def get_token_usage_stats() -> dict[str, Any]:
+    """Calculate total token usage for the models from local Antigravity transcript logs."""
+    brain_dir = Path(r"C:\Users\rynol\.gemini\antigravity\brain")
+    conv_id = "b94718ff-f63e-4dea-968a-6a537078cb8d"
+    log_file = brain_dir / conv_id / ".system_generated" / "logs" / "transcript.jsonl"
+
+    tot_in = 0
+    tot_out = 0
+    tot_cache = 0
+    requests = 0
+
+    if log_file.exists():
+        try:
+            with open(log_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    try:
+                        d = json.loads(line)
+                        i = d.get("input_tokens") or 0
+                        o = d.get("output_tokens") or 0
+                        c = d.get("cache_read_tokens") or 0
+                        if i or o or c:
+                            tot_in += i
+                            tot_out += o
+                            tot_cache += c
+                            requests += 1
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+
+    all_in = tot_in
+    all_out = tot_out
+    all_cache = tot_cache
+    if brain_dir.exists():
+        try:
+            for d in brain_dir.iterdir():
+                if not d.is_dir() or d.name == conv_id:
+                    continue
+                p = d / ".system_generated" / "logs" / "transcript.jsonl"
+                if not p.exists():
+                    continue
+                try:
+                    with open(p, "r", encoding="utf-8") as f:
+                        for line in f:
+                            if not line.strip():
+                                continue
+                            try:
+                                o = json.loads(line)
+                                all_in += o.get("input_tokens") or 0
+                                all_out += o.get("output_tokens") or 0
+                                all_cache += o.get("cache_read_tokens") or 0
+                            except Exception:
+                                pass
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    if tot_in == 0 and TOKEN_USAGE_FILE.exists():
+        try:
+            return json.loads(TOKEN_USAGE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+
+    stats = {
+        "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "primary_model": "Gemini (Argon & Flash)",
+        "session_total_tokens": tot_in + tot_out + tot_cache,
+        "session_input_tokens": tot_in,
+        "session_output_tokens": tot_out,
+        "session_cache_read_tokens": tot_cache,
+        "session_requests": requests,
+        "all_conversations_total_tokens": all_in + all_out + all_cache,
+        "all_conversations_input_tokens": all_in,
+        "all_conversations_output_tokens": all_out,
+        "all_conversations_cache_read_tokens": all_cache,
+    }
+    try:
+        TOKEN_USAGE_FILE.write_text(json.dumps(stats, indent=2), encoding="utf-8")
+    except Exception:
+        pass
+    return stats
+
+
 def sync_embedded_html() -> None:
     """Keep index.html and money.html embedded JSON synced so opening directly always shows latest data."""
     reb_file = BASE_DIR / "last_rebalance_report.json"
@@ -679,19 +769,23 @@ def sync_embedded_html() -> None:
         if all_trades_file.exists()
         else SYSTEM_TRADES_BASELINE
     )
+    token_stats = get_token_usage_stats()
     reb_obj = json.loads(reb_file.read_text(encoding="utf-8"))
     if not reb_obj.get("system_trades"):
         reb_obj["system_trades"] = trades_list
-        reb_file.write_text(json.dumps(reb_obj, indent=2), encoding="utf-8")
+    reb_obj["token_usage"] = token_stats
+    reb_file.write_text(json.dumps(reb_obj, indent=2), encoding="utf-8")
 
     reb_txt = json.dumps(reb_obj, indent=2)
     hist_txt = DAILY_HISTORY_FILE.read_text(encoding="utf-8").strip()
     trades_txt = json.dumps(reb_obj.get("system_trades", trades_list), indent=2)
+    tokens_txt = json.dumps(token_stats, indent=2)
     news_txt = json.dumps(fetch_latest_news(), indent=2)
     replacement = (
         f"<script>window.EMBEDDED_REBALANCE = {reb_txt};\n"
         f"window.EMBEDDED_HISTORY = {hist_txt};\n"
         f"window.EMBEDDED_TRADES = {trades_txt};\n"
+        f"window.EMBEDDED_TOKENS = {tokens_txt};\n"
         f"window.EMBEDDED_NEWS = {news_txt};</script>"
     )
     for fname in ["index.html", "money.html"]:
