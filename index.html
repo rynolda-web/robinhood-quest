@@ -20,8 +20,8 @@
       padding: 0 0 64px;
     }
 
-    /* TOP SIDE-SCROLLING 7-DAY CALENDAR TICKER STRIP */
-    .cal-strip-header {
+    /* TOP STATIC HORIZONTALLY-SCROLLABLE SYSTEM TRADES BAR */
+    .trades-strip-header {
       background: #111111;
       color: #ffffff;
       padding: 6px 20px;
@@ -33,13 +33,13 @@
       align-items: center;
     }
 
-    .cal-strip-header span.action {
+    .trades-strip-header span.sub {
       font-weight: 400;
-      text-decoration: underline;
-      cursor: pointer;
+      color: #cccccc;
+      text-transform: none;
     }
 
-    .cal-ticker-outer {
+    .trades-bar-outer {
       width: 100%;
       border-bottom: 2px solid #111111;
       background: #f7f7f7;
@@ -50,94 +50,65 @@
       scrollbar-width: thin;
     }
 
-    .cal-ticker-track {
+    .trades-bar-track {
       display: inline-flex;
       align-items: stretch;
-      animation: side-marquee 45s linear infinite;
     }
 
-    .cal-ticker-outer:hover .cal-ticker-track {
-      animation-play-state: paused;
-    }
-
-    @keyframes side-marquee {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-50%, 0, 0); }
-    }
-
-    .day-card {
+    .trade-card {
       display: inline-flex;
       flex-direction: column;
-      justify-content: flex-start;
-      min-width: 240px;
-      max-width: 280px;
-      padding: 10px 14px;
+      justify-content: space-between;
+      min-width: 215px;
+      padding: 8px 12px;
       border-right: 1px solid #111111;
       background: #ffffff;
       white-space: normal;
       vertical-align: top;
+      font-variant-numeric: tabular-nums;
     }
 
-    .day-card.today {
-      background: #efefef;
+    .trade-card.sell {
+      background: #f2f2f2;
     }
 
-    .day-header {
+    .trade-header {
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       border-bottom: 1px solid #111111;
-      padding-bottom: 4px;
-      margin-bottom: 6px;
+      padding-bottom: 3px;
+      margin-bottom: 5px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
-    .day-events {
-      font-size: 11px;
-      color: #222222;
-      line-height: 1.4;
-    }
-
-    .day-event-row {
-      margin-bottom: 4px;
-    }
-
-    .day-event-time {
-      font-weight: 700;
-    }
-
-    .cal-drawer {
-      display: none;
-      max-width: 720px;
-      margin: 12px auto 0;
-      padding: 12px;
+    .trade-badge {
+      font-size: 10px;
+      padding: 0 4px;
       border: 1px solid #111111;
-      background: #fafafa;
-      font-size: 11px;
-    }
-
-    .cal-drawer.open {
-      display: block;
-    }
-
-    .cal-drawer input {
-      width: 100%;
-      padding: 6px 8px;
-      font-family: inherit;
-      font-size: 11px;
-      border: 1px solid #111111;
-      margin: 6px 0;
-    }
-
-    .cal-drawer button {
       background: #111111;
       color: #ffffff;
-      border: 1px solid #111111;
-      font-family: inherit;
+    }
+
+    .trade-badge.sell {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    .trade-body {
       font-size: 11px;
-      padding: 4px 10px;
-      cursor: pointer;
+      color: #111111;
+      line-height: 1.35;
+    }
+
+    .trade-meta {
+      font-size: 10px;
+      color: #555555;
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
     }
 
     .wrap {
@@ -297,28 +268,13 @@
 </head>
 <body>
 
-  <!-- TOP SIDE-SCROLLING 7-DAY CALENDAR TICKER -->
-  <div class="cal-strip-header">
-    <span>7-DAY CALENDAR TICKER — RYNOLDA@GMAIL.COM</span>
-    <span class="action" onclick="toggleCalDrawer()">[Link Private iCal / View Full Google Agenda]</span>
+  <!-- TOP STATIC SYSTEM TRADES BAR -->
+  <div class="trades-strip-header">
+    <span>SYSTEM TRADES LOG — ALL COMPLETED &amp; SUBMITTED ORDERS</span>
+    <span class="sub" id="trades-count">23 System Trades (Scroll Horizontally &rarr;)</span>
   </div>
-  <div class="cal-ticker-outer">
-    <div class="cal-ticker-track" id="cal-ticker-track">
-      <!-- Side-scrolling 7-day calendar cards duplicated for seamless loop -->
-    </div>
-  </div>
-
-  <!-- Optional Private Google Calendar iCal Linker / Embed Drawer -->
-  <div class="cal-drawer" id="cal-drawer">
-    <div style="margin-bottom:6px;">
-      <strong>Sync Private Events from rynolda@gmail.com:</strong>
-      In Google Calendar Settings → <em>rynolda@gmail.com</em> → <em>Integrate calendar</em>, copy your <strong>"Secret address in iCal format"</strong> and paste it here so your personal events populate the 7-day side-scrolling ticker cards above:
-    </div>
-    <input type="text" id="ical-input" placeholder="https://calendar.google.com/calendar/ical/rynolda%40gmail.com/private-.../basic.ics" />
-    <button onclick="saveIcalUrl()">Save iCal URL</button>
-    <div style="margin-top:10px; border:1px solid #111; height:170px; overflow-y:auto;">
-      <iframe id="gcal-frame" title="Google Calendar 7-Day Agenda" style="width:100%; height:360px; border:0; filter:grayscale(100%);" loading="lazy"></iframe>
-    </div>
+  <div class="trades-bar-outer">
+    <div class="trades-bar-track" id="trades-bar-track"></div>
   </div>
 
   <div class="wrap">
@@ -420,23 +376,278 @@
   </div>
 
   <script>window.EMBEDDED_REBALANCE = {
-  "timestamp": "2026-11-05T00:31:46.619248+00:00",
+  "timestamp": "2026-11-05T00:38:27.094502+00:00",
   "status": "rebalance_checked",
-  "total_tracked_equity_usd": 9938.02,
+  "total_tracked_equity_usd": 9937.44,
   "high_risk_cost_usd": 1000.0,
-  "high_risk_total_usd": 989.1,
+  "high_risk_total_usd": 988.56,
   "rotations_executed": 0,
   "actions": [],
+  "system_trades": [
+    {
+      "id": "6aebc071-e50e-4eec-8fb4-6601ebff2bfa",
+      "symbol": "OPFI",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 14.93,
+      "price": 6.7,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:32:01Z"
+    },
+    {
+      "id": "6aebc06f-356d-4910-b56f-4cc89254c44e",
+      "symbol": "RIG",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 18.18,
+      "price": 5.5,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:59Z"
+    },
+    {
+      "id": "6aebc06e-58ec-4218-a8b7-84577d4fa5c1",
+      "symbol": "SNAP",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 18.69,
+      "price": 5.35,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:58Z"
+    },
+    {
+      "id": "6aebc06c-b8bd-4090-8586-b2810bca55de",
+      "symbol": "BB",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 11.39,
+      "price": 8.78,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:56Z"
+    },
+    {
+      "id": "6aebc06b-266c-49fd-80ab-12ccc0d30f6e",
+      "symbol": "BTG",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 19.53,
+      "price": 5.12,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:55Z"
+    },
+    {
+      "id": "6aebc069-72de-4a87-b8ac-9e36b2262fc2",
+      "symbol": "PAYO",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 13.89,
+      "price": 7.2,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:53Z"
+    },
+    {
+      "id": "6aebc067-b6c4-481a-933e-8e8d6d83042c",
+      "symbol": "FINV",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 32.57,
+      "price": 3.07,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:51Z"
+    },
+    {
+      "id": "6aebc066-f191-4c51-a72a-f224cd9d3725",
+      "symbol": "WB",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 15.22,
+      "price": 6.57,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:50Z"
+    },
+    {
+      "id": "6aebc064-4c9f-4508-9ead-395d7a0c60f2",
+      "symbol": "GRAB",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 29.85,
+      "price": 3.35,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:48Z"
+    },
+    {
+      "id": "6aebc063-ad04-47c1-b397-3ff7e479fba7",
+      "symbol": "RUN",
+      "side": "BUY",
+      "portfolio": "High Risk ($1k)",
+      "state": "FILLED",
+      "qty": 10.34,
+      "price": 9.67,
+      "total_usd": 100.0,
+      "created_at": "2026-11-04T23:31:47Z"
+    },
+    {
+      "id": "6aeb9afa-c966-44f5-8aef-67417b174b0c",
+      "symbol": "URG",
+      "side": "SELL",
+      "portfolio": "Legacy Cleanup",
+      "state": "FILLED",
+      "qty": 77.82,
+      "price": 0.75,
+      "total_usd": 58.44,
+      "created_at": "2026-11-04T20:52:10Z"
+    },
+    {
+      "id": "6aeb9af8-bc31-4e68-8680-253ad1cf6329",
+      "symbol": "HIVE",
+      "side": "SELL",
+      "portfolio": "Legacy Cleanup",
+      "state": "FILLED",
+      "qty": 31.35,
+      "price": 1.81,
+      "total_usd": 56.9,
+      "created_at": "2026-11-04T20:52:08Z"
+    },
+    {
+      "id": "6aeb9af6-07a3-48bd-95ac-38cf8054163a",
+      "symbol": "AVGO",
+      "side": "SELL",
+      "portfolio": "Legacy Cleanup",
+      "state": "FILLED",
+      "qty": 0.5898,
+      "price": 325.12,
+      "total_usd": 191.76,
+      "created_at": "2026-11-04T20:52:06Z"
+    },
+    {
+      "id": "6aeb775a-79a8-447d-88e3-f4281fd9b8ab",
+      "symbol": "PLTR",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 5.84,
+      "price": 171.24,
+      "total_usd": 1000.04,
+      "created_at": "2026-11-04T18:20:10Z"
+    },
+    {
+      "id": "6aeb7759-4432-434b-a06a-f8e858854863",
+      "symbol": "SHOP",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 6.58,
+      "price": 151.96,
+      "total_usd": 999.86,
+      "created_at": "2026-11-04T18:20:09Z"
+    },
+    {
+      "id": "6aeb7757-f26e-45bf-9050-bcb9e6f7257c",
+      "symbol": "CDNS",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 3.03,
+      "price": 329.94,
+      "total_usd": 999.72,
+      "created_at": "2026-11-04T18:20:07Z"
+    },
+    {
+      "id": "6aeb7755-6a7f-48b1-8e63-137d234a8291",
+      "symbol": "ISRG",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 2.06,
+      "price": 485.18,
+      "total_usd": 999.47,
+      "created_at": "2026-11-04T18:20:05Z"
+    },
+    {
+      "id": "6aeb7753-f801-432e-be60-b3fa7d2e96bb",
+      "symbol": "GRMN",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 3.43,
+      "price": 291.69,
+      "total_usd": 1000.5,
+      "created_at": "2026-11-04T18:20:03Z"
+    },
+    {
+      "id": "6aeb7751-e5d3-4612-af75-ebbe0dba9863",
+      "symbol": "TSM",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 2.52,
+      "price": 397.02,
+      "total_usd": 1000.49,
+      "created_at": "2026-11-04T18:20:01Z"
+    },
+    {
+      "id": "6aeb7750-12a0-4f03-b1ab-3d1294dba0ff",
+      "symbol": "META",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 1.57,
+      "price": 636.78,
+      "total_usd": 999.74,
+      "created_at": "2026-11-04T18:20:00Z"
+    },
+    {
+      "id": "6aeb774e-ba96-41d2-819d-af4b4f598b0b",
+      "symbol": "AMZN",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 3.71,
+      "price": 269.84,
+      "total_usd": 1001.11,
+      "created_at": "2026-11-04T18:19:58Z"
+    },
+    {
+      "id": "6aeb774c-a492-44d9-b401-61ad86a98db9",
+      "symbol": "AAPL",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 2.83,
+      "price": 353.81,
+      "total_usd": 1001.27,
+      "created_at": "2026-11-04T18:19:56Z"
+    },
+    {
+      "id": "6aeb774b-c40c-4c97-a179-496e34e39a36",
+      "symbol": "MSFT",
+      "side": "BUY",
+      "portfolio": "$10k Portfolio",
+      "state": "FILLED",
+      "qty": 1.8,
+      "price": 556.1,
+      "total_usd": 1000.98,
+      "created_at": "2026-11-04T18:19:55Z"
+    }
+  ],
   "portfolio_snapshot": [
     {
       "symbol": "AAPL",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.27,
-      "equity_usd": 994.18,
-      "pl_usd": -7.09,
+      "equity_usd": 993.33,
+      "pl_usd": -7.94,
       "quantity": 2.83,
-      "price": 351.3,
-      "total_return_pct": -0.71,
+      "price": 350.9984,
+      "total_return_pct": -0.79,
       "score": 122.85,
       "sharpe_ratio": 0.8,
       "sortino_ratio": 1.14,
@@ -445,17 +656,17 @@
       "earnings_yield_pct": 2.71,
       "rsi_14": 41.7,
       "sma_200": 297.34,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "AMZN",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.11,
-      "equity_usd": 985.41,
-      "pl_usd": -15.7,
+      "equity_usd": 985.08,
+      "pl_usd": -16.03,
       "quantity": 3.71,
-      "price": 265.61,
-      "total_return_pct": -1.57,
+      "price": 265.5201,
+      "total_return_pct": -1.6,
       "score": 106.45,
       "sharpe_ratio": 0.05,
       "sortino_ratio": 0.08,
@@ -464,7 +675,7 @@
       "earnings_yield_pct": 4.94,
       "rsi_14": 48.7,
       "sma_200": 243.5,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "CDNS",
@@ -483,7 +694,7 @@
       "earnings_yield_pct": 1.55,
       "rsi_14": 47.3,
       "sma_200": 327.61,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "GRMN",
@@ -502,7 +713,7 @@
       "earnings_yield_pct": 3.84,
       "rsi_14": 40.7,
       "sma_200": 254.43,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "ISRG",
@@ -521,16 +732,16 @@
       "earnings_yield_pct": 1.88,
       "rsi_14": 58.6,
       "sma_200": 432.07,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "META",
       "bucket": "core_tech",
       "cost_basis_usd": 999.74,
-      "equity_usd": 990.98,
-      "pl_usd": -8.76,
+      "equity_usd": 990.92,
+      "pl_usd": -8.82,
       "quantity": 1.57,
-      "price": 631.2,
+      "price": 631.1591,
       "total_return_pct": -0.88,
       "score": 77.15,
       "sharpe_ratio": 0.08,
@@ -540,17 +751,17 @@
       "earnings_yield_pct": 4.72,
       "rsi_14": 37.0,
       "sma_200": 632.04,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "MSFT",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.98,
-      "equity_usd": 997.02,
-      "pl_usd": -3.96,
+      "equity_usd": 997.56,
+      "pl_usd": -3.42,
       "quantity": 1.8,
-      "price": 553.9,
-      "total_return_pct": -0.4,
+      "price": 554.2,
+      "total_return_pct": -0.34,
       "score": 107.53,
       "sharpe_ratio": 0.07,
       "sortino_ratio": 0.11,
@@ -559,17 +770,17 @@
       "earnings_yield_pct": 3.68,
       "rsi_14": 49.4,
       "sma_200": 438.48,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "PLTR",
       "bucket": "emerging_tech",
       "cost_basis_usd": 1000.04,
-      "equity_usd": 1002.09,
-      "pl_usd": 2.05,
+      "equity_usd": 1002.73,
+      "pl_usd": 2.69,
       "quantity": 5.84,
-      "price": 171.59,
-      "total_return_pct": 0.2,
+      "price": 171.7,
+      "total_return_pct": 0.27,
       "score": 74.53,
       "sharpe_ratio": 0.08,
       "sortino_ratio": 0.13,
@@ -578,7 +789,7 @@
       "earnings_yield_pct": 0.81,
       "rsi_14": 35.8,
       "sma_200": 153.6,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "SHOP",
@@ -597,17 +808,17 @@
       "earnings_yield_pct": 1.15,
       "rsi_14": 33.3,
       "sma_200": 129.81,
-      "hours_held": 6.2
+      "hours_held": 6.3
     },
     {
       "symbol": "TSM",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.49,
-      "equity_usd": 989.07,
-      "pl_usd": -11.42,
+      "equity_usd": 988.55,
+      "pl_usd": -11.94,
       "quantity": 2.52,
-      "price": 392.49,
-      "total_return_pct": -1.14,
+      "price": 392.28,
+      "total_return_pct": -1.19,
       "score": 104.2,
       "sharpe_ratio": 0.9,
       "sortino_ratio": 1.34,
@@ -616,27 +827,27 @@
       "earnings_yield_pct": 3.84,
       "rsi_14": 39.3,
       "sma_200": 400.76,
-      "hours_held": 6.2
+      "hours_held": 6.3
     }
   ],
   "high_risk_snapshot": [
     {
       "symbol": "RUN",
       "quantity": 10.34,
-      "price": 9.61,
+      "price": 9.6,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.36,
-      "pl_usd": -0.64,
-      "total_return_pct": -0.64
+      "equity_usd": 99.24,
+      "pl_usd": -0.76,
+      "total_return_pct": -0.76
     },
     {
       "symbol": "GRAB",
       "quantity": 29.85,
-      "price": 3.35,
+      "price": 3.34,
       "cost_basis_usd": 100.0,
-      "equity_usd": 100.0,
-      "pl_usd": 0.0,
-      "total_return_pct": 0.0
+      "equity_usd": 99.7,
+      "pl_usd": -0.3,
+      "total_return_pct": -0.3
     },
     {
       "symbol": "WB",
@@ -677,20 +888,20 @@
     {
       "symbol": "BB",
       "quantity": 11.39,
-      "price": 8.72,
+      "price": 8.71,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.32,
-      "pl_usd": -0.68,
-      "total_return_pct": -0.68
+      "equity_usd": 99.21,
+      "pl_usd": -0.79,
+      "total_return_pct": -0.79
     },
     {
       "symbol": "SNAP",
       "quantity": 18.69,
       "price": 5.21,
       "cost_basis_usd": 100.0,
-      "equity_usd": 97.38,
-      "pl_usd": -2.62,
-      "total_return_pct": -2.62
+      "equity_usd": 97.37,
+      "pl_usd": -2.63,
+      "total_return_pct": -2.63
     },
     {
       "symbol": "RIG",
@@ -715,12 +926,12 @@
 window.EMBEDDED_HISTORY = [
   {
     "date": "2026-11-04",
-    "updated_at": "2026-11-05T00:31:46.620224+00:00",
+    "updated_at": "2026-11-05T00:38:27.120814+00:00",
     "initial_cost_usd": 10002.63,
-    "tracked_total_usd": 9938.02,
-    "daily_pl_usd": -64.61,
+    "tracked_total_usd": 9937.44,
+    "daily_pl_usd": -65.19,
     "daily_pl_pct": -0.65,
-    "total_pl_usd": -64.61,
+    "total_pl_usd": -65.19,
     "total_pl_pct": -0.65
   }
 ];
@@ -747,7 +958,7 @@ window.EMBEDDED_NEWS = [
     "source": "NYT",
     "title": "How Trump\u2019s Energy Policies Helped Trigger Midterm Rout",
     "link": "https://www.nytimes.com/2026/11/04/climate/trump-fossil-fuel-energy-policy-election.html",
-    "pubDate": "Wed, 04 Nov 2026 19:51:40 +0000"
+    "pubDate": "Thu, 05 Nov 2026 00:31:06 +0000"
   },
   {
     "source": "NYT",
@@ -799,7 +1010,7 @@ window.EMBEDDED_NEWS = [
   },
   {
     "source": "WSJ",
-    "title": "Is Flying Private Less Safe? Here\u2019s How The Rules Differ From Commercial Airlines",
+    "title": "Is Flying Private Less Safe? Here\u2019s How the Rules Differ From Commercial Airlines",
     "link": "https://www.wsj.com/business/airlines/is-flying-private-less-safe-heres-how-the-rules-differ-from-commercial-airlines-593a8e74?mod=pls_whats_news_us_business_f",
     "pubDate": "Thu, 05 Nov 2026 00:00:00 GMT"
   },
@@ -891,107 +1102,43 @@ window.EMBEDDED_NEWS = [
       return (v >= 0 ? "+" : "") + v.toFixed(2) + "%";
     }
 
-    function toggleCalDrawer() {
-      document.getElementById("cal-drawer").classList.toggle("open");
-    }
+    function renderTradesBar(reb) {
+      const trades = (reb && reb.system_trades) || [];
+      const track = document.getElementById("trades-bar-track");
+      const countEl = document.getElementById("trades-count");
+      if (!track) return;
 
-    function saveIcalUrl() {
-      const val = document.getElementById("ical-input").value.trim();
-      if (val) {
-        localStorage.setItem("rynolda_ical_url", val);
-        loadCalendarTicker();
-      }
-    }
-
-    function parseIcsByDay(icsText) {
-      const byDay = {};
-      const blocks = icsText.split("BEGIN:VEVENT").slice(1);
-      for (const b of blocks) {
-        const sumMatch = b.match(/SUMMARY[^:]*:(.*)/);
-        const dtMatch = b.match(/DTSTART[^:]*:(\d{8}(?:T\d{6}Z?)?)/);
-        if (!sumMatch || !dtMatch) continue;
-        const summary = sumMatch[1].trim();
-        const raw = dtMatch[1].trim();
-        const dateKey = `${raw.slice(0,4)}-${raw.slice(4,6)}-${raw.slice(6,8)}`;
-        let timeStr = "All Day";
-        if (raw.length > 8) {
-          const iso = `${dateKey}T${raw.slice(9,11)}:${raw.slice(11,13)}:00${raw.endsWith("Z") ? "Z" : ""}`;
-          const d = new Date(iso);
-          if (!isNaN(d)) {
-            timeStr = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-          }
-        }
-        if (!byDay[dateKey]) byDay[dateKey] = [];
-        byDay[dateKey].push({ time: timeStr, title: summary });
-      }
-      return byDay;
-    }
-
-    async function loadCalendarTicker() {
-      const now = new Date();
-      const end = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
-      const fmt = d => d.toISOString().slice(0, 10).replace(/-/g, "");
-      document.getElementById("gcal-frame").src =
-        `https://calendar.google.com/calendar/embed?src=${encodeURIComponent("rynolda@gmail.com")}` +
-        `&mode=AGENDA&dates=${fmt(now)}/${fmt(end)}&showTitle=0&showNav=0&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0`;
-
-      let userEventsByDay = {};
-      const savedIcal = localStorage.getItem("rynolda_ical_url") ||
-        "https://calendar.google.com/calendar/ical/rynolda%40gmail.com/public/basic.ics";
-      if (localStorage.getItem("rynolda_ical_url")) {
-        document.getElementById("ical-input").value = localStorage.getItem("rynolda_ical_url");
-      }
-
-      try {
-        const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(savedIcal)}`);
-        if (res.ok) {
-          const text = await res.text();
-          if (text.includes("BEGIN:VCALENDAR")) {
-            userEventsByDay = parseIcsByDay(text);
-          }
-        }
-      } catch (e) {}
-
-      // Build 7 day cards for the next 7 days
-      const cardsHtml = [];
-      for (let i = 0; i < 7; i++) {
-        const d = new Date(now.getTime() + i * 24 * 60 * 60 * 1000);
-        const yyyy = d.getFullYear();
-        const mm = String(d.getMonth() + 1).padStart(2, "0");
-        const dd = String(d.getDate()).padStart(2, "0");
-        const key = `${yyyy}-${mm}-${dd}`;
-        const dayLabel = d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
-        const dow = d.getDay();
-
-        const evs = userEventsByDay[key] ? [...userEventsByDay[key]] : [];
-        if (dow >= 1 && dow <= 5) {
-          evs.push({ time: "09:30 AM", title: "Market Open & Order Fill Check" });
-          evs.push({ time: "Hourly", title: "Auto-Rebalance Scan (10AM–4PM)" });
-        } else {
-          evs.push({ time: "All Day", title: "Markets Closed (Weekend Hold)" });
-        }
-
-        const eventsMarkup = evs.map(e =>
-          `<div class="day-event-row"><span class="day-event-time">${e.time}:</span> ${e.title}</div>`
-        ).join("");
-
-        cardsHtml.push(`
-          <div class="day-card ${i === 0 ? 'today' : ''}">
-            <div class="day-header">
-              <span>${dayLabel}</span>
-              <span>${i === 0 ? 'TODAY' : `DAY +${i}`}</span>
+      countEl.textContent = `${trades.length} System Trades (Scroll Horizontally \u2192)`;
+      track.innerHTML = trades.map(t => {
+        const isSell = (t.side || "").toUpperCase() === "SELL";
+        const dt = t.created_at ? new Date(t.created_at) : null;
+        const dtStr = dt && !isNaN(dt)
+          ? dt.toLocaleString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })
+          : "";
+        const qtyPriceStr = t.qty && t.price
+          ? `${Number(t.qty).toFixed(2)} sh @ ${usd(t.price)}`
+          : `Market Order`;
+        return `
+          <div class="trade-card ${isSell ? 'sell' : ''}">
+            <div class="trade-header">
+              <span><span class="trade-badge ${isSell ? 'sell' : ''}">${t.side}</span> ${t.symbol}</span>
+              <span>${usd(t.total_usd)}</span>
             </div>
-            <div class="day-events">${eventsMarkup}</div>
+            <div class="trade-body">
+              <div>${qtyPriceStr}</div>
+              <div>Portfolio: <strong>${t.portfolio || 'System'}</strong></div>
+            </div>
+            <div class="trade-meta">
+              <span>[${t.state || 'FILLED'}]</span>
+              <span>${dtStr}</span>
+            </div>
           </div>
-        `);
-      }
-
-      // Duplicate the 7 cards so the horizontal marquee loops seamlessly
-      const track = document.getElementById("cal-ticker-track");
-      track.innerHTML = cardsHtml.join("") + cardsHtml.join("");
+        `;
+      }).join("");
     }
 
     function renderPortfolio(reb, hist) {
+      renderTradesBar(reb);
       const latest = hist[hist.length - 1] || {};
       const cashIn = Number(latest.initial_cost_usd || 10002.63);
       const totalNow = Number(reb.total_tracked_equity_usd || latest.tracked_total_usd || 0);
@@ -1197,14 +1344,12 @@ window.EMBEDDED_NEWS = [
       } catch (e) {}
     }
 
-    loadCalendarTicker();
     loadPortfolio();
     refreshLiveBrowserQuotes();
     loadNews();
     setInterval(loadPortfolio, 10000);
     setInterval(refreshLiveBrowserQuotes, 60000);
     setInterval(loadNews, 60000);
-    setInterval(loadCalendarTicker, 60000);
   </script>
 </body>
 </html>
