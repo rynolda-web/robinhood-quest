@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-11-05T02:45:00.615454+00:00",
+  "primary_model": "Gemini (Argon & Flash)",
+  "session_total_tokens": 43441457,
+  "session_input_tokens": 2537647,
+  "session_output_tokens": 178373,
+  "session_cache_read_tokens": 40725437,
+  "session_requests": 314,
+  "all_conversations_total_tokens": 55448411,
+  "all_conversations_input_tokens": 3605171,
+  "all_conversations_output_tokens": 290427,
+  "all_conversations_cache_read_tokens": 51552813
+}
