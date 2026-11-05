@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-11-05T08:04:07.688493+00:00",
+  "timestamp": "2026-11-05T09:00:14.451271+00:00",
   "status": "rebalance_checked",
-  "total_tracked_equity_usd": 9932.36,
+  "total_tracked_equity_usd": 9923.45,
   "high_risk_cost_usd": 1000.0,
-  "high_risk_total_usd": 989.29,
+  "high_risk_total_usd": 986.64,
   "rotations_executed": 0,
   "actions": [],
   "system_trades": [
@@ -1809,43 +1809,43 @@
     }
   ],
   "token_usage": {
-    "updated_at": "2026-11-05T08:00:24.258109+00:00",
+    "updated_at": "2026-11-05T09:00:14.489135+00:00",
     "primary_model": "Gemini (Argon & Flash)",
     "fleet_quota_tokens": 100000000,
-    "fleet_tokens_left": 35212370,
-    "fleet_tokens_left_pct": 35.21,
-    "session_tokens_left": 47499006,
-    "session_tokens_left_pct": 47.5,
+    "fleet_tokens_left": 34360170,
+    "fleet_tokens_left_pct": 34.36,
+    "session_tokens_left": 46646806,
+    "session_tokens_left_pct": 46.65,
     "all_models_context_limit": 3145728,
-    "all_models_context_left": 2976817,
-    "all_models_context_left_pct": 94.63,
+    "all_models_context_left": 2974005,
+    "all_models_context_left_pct": 94.54,
     "gemini_pro_context_limit": 2097152,
-    "gemini_pro_context_left": 1928241,
-    "gemini_pro_context_left_pct": 91.95,
+    "gemini_pro_context_left": 1925429,
+    "gemini_pro_context_left_pct": 91.81,
     "gemini_flash_context_limit": 1048576,
-    "gemini_flash_context_left": 879665,
-    "gemini_flash_context_left_pct": 83.89,
-    "latest_turn_context_tokens": 168911,
-    "session_total_tokens": 52500994,
-    "session_input_tokens": 3493282,
-    "session_output_tokens": 216149,
-    "session_cache_read_tokens": 48791563,
-    "session_requests": 393,
-    "all_conversations_total_tokens": 64787630,
-    "all_conversations_input_tokens": 4634856,
-    "all_conversations_output_tokens": 330459,
-    "all_conversations_cache_read_tokens": 59822315
+    "gemini_flash_context_left": 876853,
+    "gemini_flash_context_left_pct": 83.62,
+    "latest_turn_context_tokens": 171723,
+    "session_total_tokens": 53353194,
+    "session_input_tokens": 3675204,
+    "session_output_tokens": 217189,
+    "session_cache_read_tokens": 49460801,
+    "session_requests": 398,
+    "all_conversations_total_tokens": 65639830,
+    "all_conversations_input_tokens": 4816778,
+    "all_conversations_output_tokens": 331499,
+    "all_conversations_cache_read_tokens": 60491553
   },
   "portfolio_snapshot": [
     {
       "symbol": "AAPL",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.27,
-      "equity_usd": 992.71,
-      "pl_usd": -8.56,
+      "equity_usd": 988.85,
+      "pl_usd": -12.42,
       "quantity": 2.83,
-      "price": 350.78,
-      "total_return_pct": -0.85,
+      "price": 349.42,
+      "total_return_pct": -1.24,
       "score": 123.17,
       "sharpe_ratio": 0.8,
       "sortino_ratio": 1.14,
@@ -1854,17 +1854,17 @@
       "earnings_yield_pct": 2.71,
       "rsi_14": 41.7,
       "sma_200": 297.76,
-      "hours_held": 13.7
+      "hours_held": 14.7
     },
     {
       "symbol": "AMZN",
       "bucket": "core_tech",
       "cost_basis_usd": 1001.11,
-      "equity_usd": 984.86,
-      "pl_usd": -16.25,
+      "equity_usd": 993.5,
+      "pl_usd": -7.61,
       "quantity": 3.71,
-      "price": 265.46,
-      "total_return_pct": -1.62,
+      "price": 267.79,
+      "total_return_pct": -0.76,
       "score": 106.85,
       "sharpe_ratio": 0.04,
       "sortino_ratio": 0.07,
@@ -1873,7 +1873,7 @@
       "earnings_yield_pct": 4.94,
       "rsi_14": 48.7,
       "sma_200": 243.59,
-      "hours_held": 13.7
+      "hours_held": 14.7
     },
     {
       "symbol": "CDNS",
@@ -1892,7 +1892,7 @@
       "earnings_yield_pct": 1.55,
       "rsi_14": 50.5,
       "sma_200": 327.73,
-      "hours_held": 13.7
+      "hours_held": 14.7
     },
     {
       "symbol": "GRMN",
@@ -1911,17 +1911,17 @@
       "earnings_yield_pct": 3.84,
       "rsi_14": 55.2,
       "sma_200": 254.88,
-      "hours_held": 13.7
+      "hours_held": 14.7
     },
     {
       "symbol": "ISRG",
       "bucket": "emerging_tech",
       "cost_basis_usd": 999.47,
-      "equity_usd": 985.71,
-      "pl_usd": -13.76,
+      "equity_usd": 984.68,
+      "pl_usd": -14.79,
       "quantity": 2.06,
-      "price": 478.5,
-      "total_return_pct": -1.38,
+      "price": 478.0,
+      "total_return_pct": -1.48,
       "score": 78.69,
       "sharpe_ratio": -0.6,
       "sortino_ratio": -0.78,
@@ -1930,17 +1930,17 @@
       "earnings_yield_pct": 1.88,
       "rsi_14": 58.6,
       "sma_200": 431.63,
-      "hours_held": 13.7
+      "hours_held": 14.7
     },
     {
       "symbol": "META",
       "bucket": "core_tech",
       "cost_basis_usd": 999.74,
-      "equity_usd": 989.41,
-      "pl_usd": -10.33,
+      "equity_usd": 992.73,
+      "pl_usd": -7.01,
       "quantity": 1.57,
-      "price": 630.2,
-      "total_return_pct": -1.03,
+      "price": 632.31,
+      "total_return_pct": -0.7,
       "score": 75.67,
       "sharpe_ratio": 0.04,
       "sortino_ratio": 0.06,
@@ -1949,36 +1949,36 @@
       "earnings_yield_pct": 4.72,
       "rsi_14": 37.0,
       "sma_200": 632.12,
-      "hours_held": 13.7
+      "hours_held": 14.7
     },
     {
       "symbol": "MSFT",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.98,
-      "equity_usd": 997.53,
-      "pl_usd": -3.45,
+      "equity_usd": 1000.78,
+      "pl_usd": -0.2,
       "quantity": 1.8,
-      "price": 554.19,
-      "total_return_pct": -0.34,
-      "score": 108.31,
-      "sharpe_ratio": 0.12,
-      "sortino_ratio": 0.18,
+      "price": 555.99,
+      "total_return_pct": -0.02,
+      "score": 99.49,
+      "sharpe_ratio": 0.31,
+      "sortino_ratio": 0.49,
       "mom_12_1_pct": 4.5,
       "max_drawdown_pct": -31.0,
       "earnings_yield_pct": 3.68,
-      "rsi_14": 49.4,
-      "sma_200": 438.82,
-      "hours_held": 13.7
+      "rsi_14": 64.3,
+      "sma_200": 438.99,
+      "hours_held": 14.7
     },
     {
       "symbol": "PLTR",
       "bucket": "emerging_tech",
       "cost_basis_usd": 1000.04,
-      "equity_usd": 997.47,
-      "pl_usd": -2.57,
+      "equity_usd": 986.96,
+      "pl_usd": -13.08,
       "quantity": 5.84,
-      "price": 170.8,
-      "total_return_pct": -0.26,
+      "price": 169.0,
+      "total_return_pct": -1.31,
       "score": 74.49,
       "sharpe_ratio": 0.07,
       "sortino_ratio": 0.11,
@@ -1987,7 +1987,7 @@
       "earnings_yield_pct": 0.81,
       "rsi_14": 33.5,
       "sma_200": 153.61,
-      "hours_held": 13.7
+      "hours_held": 14.7
     },
     {
       "symbol": "SHOP",
@@ -2006,17 +2006,17 @@
       "earnings_yield_pct": 1.15,
       "rsi_14": 44.1,
       "sma_200": 129.85,
-      "hours_held": 13.7
+      "hours_held": 14.7
     },
     {
       "symbol": "TSM",
       "bucket": "core_tech",
       "cost_basis_usd": 1000.49,
-      "equity_usd": 986.83,
-      "pl_usd": -13.66,
+      "equity_usd": 978.11,
+      "pl_usd": -22.38,
       "quantity": 2.52,
-      "price": 391.6,
-      "total_return_pct": -1.37,
+      "price": 388.14,
+      "total_return_pct": -2.24,
       "score": 103.7,
       "sharpe_ratio": 0.91,
       "sortino_ratio": 1.34,
@@ -2025,27 +2025,27 @@
       "earnings_yield_pct": 3.84,
       "rsi_14": 39.3,
       "sma_200": 401.15,
-      "hours_held": 13.7
+      "hours_held": 14.7
     }
   ],
   "high_risk_snapshot": [
     {
       "symbol": "RUN",
       "quantity": 10.34,
-      "price": 9.62,
+      "price": 10.15,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.47,
-      "pl_usd": -0.53,
-      "total_return_pct": -0.53
+      "equity_usd": 104.95,
+      "pl_usd": 4.95,
+      "total_return_pct": 4.95
     },
     {
       "symbol": "GRAB",
       "quantity": 29.85,
       "price": 3.34,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.74,
-      "pl_usd": -0.26,
-      "total_return_pct": -0.26
+      "equity_usd": 99.7,
+      "pl_usd": -0.3,
+      "total_return_pct": -0.3
     },
     {
       "symbol": "WB",
@@ -2059,11 +2059,11 @@
     {
       "symbol": "FINV",
       "quantity": 32.57,
-      "price": 3.04,
+      "price": 2.8,
       "cost_basis_usd": 100.0,
-      "equity_usd": 98.85,
-      "pl_usd": -1.15,
-      "total_return_pct": -1.15
+      "equity_usd": 91.18,
+      "pl_usd": -8.82,
+      "total_return_pct": -8.82
     },
     {
       "symbol": "PAYO",
@@ -2086,20 +2086,20 @@
     {
       "symbol": "BB",
       "quantity": 11.39,
-      "price": 8.75,
+      "price": 8.65,
       "cost_basis_usd": 100.0,
-      "equity_usd": 99.66,
-      "pl_usd": -0.34,
-      "total_return_pct": -0.34
+      "equity_usd": 98.52,
+      "pl_usd": -1.48,
+      "total_return_pct": -1.48
     },
     {
       "symbol": "SNAP",
       "quantity": 18.69,
-      "price": 5.24,
+      "price": 5.28,
       "cost_basis_usd": 100.0,
-      "equity_usd": 97.96,
-      "pl_usd": -2.04,
-      "total_return_pct": -2.04
+      "equity_usd": 98.68,
+      "pl_usd": -1.32,
+      "total_return_pct": -1.32
     },
     {
       "symbol": "RIG",
