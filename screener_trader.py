@@ -737,15 +737,67 @@ def get_token_usage_stats() -> dict[str, Any]:
         except Exception:
             pass
 
+    latest_ctx = 0
+    if log_file.exists():
+        try:
+            with open(log_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    try:
+                        d = json.loads(line)
+                        i = d.get("input_tokens") or 0
+                        c = d.get("cache_read_tokens") or 0
+                        if i or c:
+                            latest_ctx = i + c
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+
+    fleet_quota = 100_000_000
+    all_total = all_in + all_out + all_cache
+    session_total = tot_in + tot_out + tot_cache
+    fleet_left = max(0, fleet_quota - all_total)
+    fleet_left_pct = round((fleet_left / fleet_quota) * 100, 2)
+    session_left = max(0, fleet_quota - session_total)
+    session_left_pct = round((session_left / fleet_quota) * 100, 2)
+
+    flash_limit = 1_048_576
+    pro_limit = 2_097_152
+    all_models_limit = flash_limit + pro_limit  # 3,145,728
+
+    all_models_left = max(0, all_models_limit - latest_ctx)
+    all_models_left_pct = round((all_models_left / all_models_limit) * 100, 2)
+    pro_left = max(0, pro_limit - latest_ctx)
+    pro_left_pct = round((pro_left / pro_limit) * 100, 2)
+    flash_left = max(0, flash_limit - latest_ctx)
+    flash_left_pct = round((flash_left / flash_limit) * 100, 2)
+
     stats = {
         "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "primary_model": "Gemini (Argon & Flash)",
-        "session_total_tokens": tot_in + tot_out + tot_cache,
+        "fleet_quota_tokens": fleet_quota,
+        "fleet_tokens_left": fleet_left,
+        "fleet_tokens_left_pct": fleet_left_pct,
+        "session_tokens_left": session_left,
+        "session_tokens_left_pct": session_left_pct,
+        "all_models_context_limit": all_models_limit,
+        "all_models_context_left": all_models_left,
+        "all_models_context_left_pct": all_models_left_pct,
+        "gemini_pro_context_limit": pro_limit,
+        "gemini_pro_context_left": pro_left,
+        "gemini_pro_context_left_pct": pro_left_pct,
+        "gemini_flash_context_limit": flash_limit,
+        "gemini_flash_context_left": flash_left,
+        "gemini_flash_context_left_pct": flash_left_pct,
+        "latest_turn_context_tokens": latest_ctx,
+        "session_total_tokens": session_total,
         "session_input_tokens": tot_in,
         "session_output_tokens": tot_out,
         "session_cache_read_tokens": tot_cache,
         "session_requests": requests,
-        "all_conversations_total_tokens": all_in + all_out + all_cache,
+        "all_conversations_total_tokens": all_total,
         "all_conversations_input_tokens": all_in,
         "all_conversations_output_tokens": all_out,
         "all_conversations_cache_read_tokens": all_cache,
