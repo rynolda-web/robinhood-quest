@@ -11,12 +11,12 @@
   },
   {
     "date": "2026-11-05",
-    "updated_at": "2026-11-05T22:48:56.708026+00:00",
+    "updated_at": "2026-11-05T23:31:17.229124+00:00",
     "initial_cost_usd": 10002.63,
-    "tracked_total_usd": 9426.34,
-    "daily_pl_usd": -512.87,
-    "daily_pl_pct": -5.16,
-    "total_pl_usd": -576.29,
-    "total_pl_pct": -5.76
+    "tracked_total_usd": 9398.62,
+    "daily_pl_usd": -540.59,
+    "daily_pl_pct": -5.44,
+    "total_pl_usd": -604.01,
+    "total_pl_pct": -6.04
   }
 ]
