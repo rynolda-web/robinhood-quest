@@ -522,14 +522,27 @@ def rebalance_portfolio(dry_run: bool = False) -> dict[str, Any]:
             "total_return_pct": pl_pct,
         })
 
-    # Build complete list of all system trades (rebalance rotations + initial & high-risk trades)
+    # Build complete list of all trades (rebalance rotations + all_trades_history.json including original entries)
+    all_trades_file = BASE_DIR / "all_trades_history.json"
+    historical_trades = []
+    if all_trades_file.exists():
+        try:
+            historical_trades = json.loads(all_trades_file.read_text(encoding="utf-8"))
+        except Exception:
+            historical_trades = SYSTEM_TRADES_BASELINE
+    else:
+        historical_trades = SYSTEM_TRADES_BASELINE
+
     system_trades = []
+    known_ids = {t.get("id") for t in historical_trades if t.get("id")}
     for rot in reversed(ledger.get("rebalances", [])):
         ts = rot.get("timestamp", now_utc.isoformat())
         amt = float(rot.get("amount_usd", 1000.0))
-        if rot.get("bought_symbol"):
+        buy_id = rot.get("buy_order_id") or f"rot-buy-{ts}"
+        sell_id = rot.get("sell_order_id") or f"rot-sell-{ts}"
+        if rot.get("bought_symbol") and buy_id not in known_ids:
             system_trades.append({
-                "id": rot.get("buy_order_id") or f"rot-buy-{ts}",
+                "id": buy_id,
                 "symbol": rot["bought_symbol"],
                 "side": "BUY",
                 "portfolio": "Rebalance Rotation",
@@ -538,10 +551,11 @@ def rebalance_portfolio(dry_run: bool = False) -> dict[str, Any]:
                 "price": 0.0,
                 "total_usd": amt,
                 "created_at": ts,
+                "executed_at": ts,
             })
-        if rot.get("sold_symbol"):
+        if rot.get("sold_symbol") and sell_id not in known_ids:
             system_trades.append({
-                "id": rot.get("sell_order_id") or f"rot-sell-{ts}",
+                "id": sell_id,
                 "symbol": rot["sold_symbol"],
                 "side": "SELL",
                 "portfolio": "Rebalance Rotation",
@@ -550,11 +564,12 @@ def rebalance_portfolio(dry_run: bool = False) -> dict[str, Any]:
                 "price": 0.0,
                 "total_usd": amt,
                 "created_at": ts,
+                "executed_at": ts,
             })
 
-    for t in SYSTEM_TRADES_BASELINE:
+    for t in historical_trades:
         t_copy = dict(t)
-        if t_copy["state"] == "QUEUED" and t_copy["symbol"] in holdings:
+        if t_copy.get("state") == "QUEUED" and t_copy.get("symbol") in holdings:
             t_copy["state"] = "FILLED"
         system_trades.append(t_copy)
 
