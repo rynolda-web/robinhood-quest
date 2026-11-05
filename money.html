@@ -17,12 +17,113 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 13px;
       line-height: 1.5;
-      padding: 32px 20px 64px;
+      padding: 0 0 64px;
+    }
+
+    /* TOP HORIZONTAL NEWS-STYLE CALENDAR TICKER BAR */
+    .ticker-bar {
+      width: 100%;
+      border-bottom: 1px solid #111111;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      height: 36px;
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .ticker-label {
+      background: #111111;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0 12px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .ticker-viewport {
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-track {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: ticker-scroll 38s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker-scroll {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+
+    .ticker-item {
+      display: inline-block;
+      margin-right: 42px;
+      font-size: 12px;
+      color: #111111;
+    }
+
+    .ticker-date {
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .cal-drawer {
+      display: none;
+      max-width: 720px;
+      margin: 8px auto 0;
+      padding: 10px 12px;
+      border: 1px solid #111111;
+      background: #fafafa;
+      font-size: 11px;
+    }
+
+    .cal-drawer.open {
+      display: block;
+    }
+
+    .cal-drawer input {
+      width: 100%;
+      padding: 6px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      border: 1px solid #111111;
+      margin: 6px 0;
+    }
+
+    .cal-drawer button {
+      background: #111111;
+      color: #ffffff;
+      border: 1px solid #111111;
+      font-family: inherit;
+      font-size: 11px;
+      padding: 4px 10px;
+      cursor: pointer;
     }
 
     .wrap {
       max-width: 720px;
-      margin: 0 auto;
+      margin: 24px auto 0;
+      padding: 0 20px;
     }
 
     h1 {
@@ -50,23 +151,6 @@
       font-weight: 400;
       color: #666666;
       text-transform: none;
-    }
-
-    /* 7-Day Google Calendar Scroll Box at Top */
-    .cal-box {
-      border: 1px solid #111111;
-      height: 185px;
-      overflow-y: auto;
-      margin-bottom: 28px;
-      background: #fafafa;
-    }
-
-    .cal-box iframe {
-      width: 100%;
-      height: 420px;
-      border: 0;
-      filter: grayscale(100%) contrast(115%);
-      display: block;
     }
 
     .summary {
@@ -134,7 +218,6 @@
       border-top: 2px solid #111111;
     }
 
-    /* Constant NYT + WSJ Business News Feed */
     .news-list {
       border: 1px solid #111111;
       max-height: 420px;
@@ -193,21 +276,34 @@
   </style>
 </head>
 <body>
+
+  <!-- TOP SCROLLING NEWS-STYLE CALENDAR TICKER (NEXT 7 DAYS) -->
+  <div class="ticker-bar">
+    <div class="ticker-label" onclick="toggleCalDrawer()" title="Click to view/link Google Calendar iCal URL">
+      NEXT 7 DAYS (rynolda@gmail.com) ▾
+    </div>
+    <div class="ticker-viewport">
+      <div class="ticker-track" id="cal-ticker-track">
+        <!-- Populated dynamically with next 7 days of calendar events -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional 1-Click iCal Linker / Live Agenda Preview Drawer -->
+  <div class="cal-drawer" id="cal-drawer">
+    <div style="margin-bottom:6px;">
+      <strong>Google Calendar 7-Day Ticker Source (rynolda@gmail.com):</strong>
+      To stream private events into the scrolling ticker without making your calendar public, paste your Google Calendar <em>"Secret address in iCal format"</em> (from Google Calendar Settings → Integrate calendar) below, or view your live 7-day Agenda directly below:
+    </div>
+    <input type="text" id="ical-input" placeholder="https://calendar.google.com/calendar/ical/rynolda%40gmail.com/private-.../basic.ics" />
+    <button onclick="saveIcalUrl()">Save iCal Feed</button>
+    <div style="margin-top:10px; border:1px solid #111; height:160px; overflow-y:auto;">
+      <iframe id="gcal-frame" title="Google Calendar 7-Day Agenda" style="width:100%; height:360px; border:0; filter:grayscale(100%);" loading="lazy"></iframe>
+    </div>
+  </div>
+
   <div class="wrap">
     <h1>Money</h1>
-
-    <!-- GOOGLE CALENDAR: NEXT 7 DAYS SCROLL (rynolda@gmail.com) -->
-    <h2>
-      <span>Calendar — Next 7 Days (rynolda@gmail.com)</span>
-      <span class="sub-status" id="cal-range"></span>
-    </h2>
-    <div class="cal-box">
-      <iframe
-        id="gcal-frame"
-        title="Google Calendar 7-Day Agenda for rynolda@gmail.com"
-        loading="lazy">
-      </iframe>
-    </div>
 
     <div class="summary">
       <div class="cell">
@@ -722,18 +818,96 @@ window.EMBEDDED_NEWS = [
       return (v >= 0 ? "+" : "") + v.toFixed(2) + "%";
     }
 
-    // Set Google Calendar Agenda Embed restricted to Next 7 Days
-    function initCalendar() {
+    function toggleCalDrawer() {
+      document.getElementById("cal-drawer").classList.toggle("open");
+    }
+
+    function saveIcalUrl() {
+      const val = document.getElementById("ical-input").value.trim();
+      if (val) {
+        localStorage.setItem("rynolda_ical_url", val);
+        loadCalendarTicker();
+      }
+    }
+
+    function parseIcsEvents(icsText) {
+      const now = new Date();
+      const sevenDays = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+      const blocks = icsText.split("BEGIN:VEVENT").slice(1);
+      const events = [];
+      for (const b of blocks) {
+        const sumMatch = b.match(/SUMMARY[^:]*:(.*)/);
+        const dtMatch = b.match(/DTSTART[^:]*:(\d{8}(?:T\d{6}Z?)?)/);
+        if (!sumMatch || !dtMatch) continue;
+        const summary = sumMatch[1].trim();
+        const raw = dtMatch[1].trim();
+        let d;
+        if (raw.length === 8) {
+          d = new Date(`${raw.slice(0,4)}-${raw.slice(4,6)}-${raw.slice(6,8)}T09:00:00`);
+        } else {
+          const iso = `${raw.slice(0,4)}-${raw.slice(4,6)}-${raw.slice(6,8)}T${raw.slice(9,11)}:${raw.slice(11,13)}:00${raw.endsWith("Z") ? "Z" : ""}`;
+          d = new Date(iso);
+        }
+        if (d >= new Date(now.getFullYear(), now.getMonth(), now.getDate()) && d <= sevenDays) {
+          events.push({ date: d, title: summary });
+        }
+      }
+      events.sort((a, b) => a.date - b.date);
+      return events;
+    }
+
+    function buildDefault7DaySchedule() {
+      const days = [];
+      const now = new Date();
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(now.getTime() + i * 24 * 60 * 60 * 1000);
+        const dayName = d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+        const dow = d.getDay();
+        const sched = (dow >= 1 && dow <= 5)
+          ? "09:30 AM Market Open & High-Risk Fill Check • Hourly Auto-Rebalance (10:00–16:00 ET)"
+          : "Weekend Market Closed • Portfolio Hold";
+        days.push({ label: dayName.toUpperCase(), text: sched });
+      }
+      return days;
+    }
+
+    async function loadCalendarTicker() {
       const now = new Date();
       const end = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
       const fmt = d => d.toISOString().slice(0, 10).replace(/-/g, "");
-      const datesParam = `${fmt(now)}/${fmt(end)}`;
-      document.getElementById("cal-range").textContent =
-        `${now.toLocaleDateString()} – ${end.toLocaleDateString()}`;
-      const calUrl =
+      document.getElementById("gcal-frame").src =
         `https://calendar.google.com/calendar/embed?src=${encodeURIComponent("rynolda@gmail.com")}` +
-        `&mode=AGENDA&dates=${datesParam}&showTitle=0&showNav=0&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0& bgcolor=%23ffffff`;
-      document.getElementById("gcal-frame").src = calUrl;
+        `&mode=AGENDA&dates=${fmt(now)}/${fmt(end)}&showTitle=0&showNav=0&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0`;
+
+      const track = document.getElementById("cal-ticker-track");
+      const savedIcal = localStorage.getItem("rynolda_ical_url") ||
+        "https://calendar.google.com/calendar/ical/rynolda%40gmail.com/public/basic.ics";
+      if (localStorage.getItem("rynolda_ical_url")) {
+        document.getElementById("ical-input").value = localStorage.getItem("rynolda_ical_url");
+      }
+
+      try {
+        const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(savedIcal)}`);
+        if (res.ok) {
+          const text = await res.text();
+          if (text.includes("BEGIN:VCALENDAR")) {
+            const evs = parseIcsEvents(text);
+            if (evs.length > 0) {
+              track.innerHTML = evs.map(e => {
+                const dStr = e.date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+                return `<span class="ticker-item"><span class="ticker-date">[${dStr}]</span> ${e.title}</span>`;
+              }).join("");
+              return;
+            }
+          }
+        }
+      } catch (e) {}
+
+      // Fallback 7-day rolling schedule ticker + click-to-link instruction
+      const items = buildDefault7DaySchedule();
+      track.innerHTML = items.map(it =>
+        `<span class="ticker-item"><span class="ticker-date">[${it.label}]</span> ${it.text}</span>`
+      ).join("") + `<span class="ticker-item"><span class="ticker-date">[GOOGLE CALENDAR]</span> Click "NEXT 7 DAYS ▾" on the left to view live agenda or link private iCal URL for rynolda@gmail.com</span>`;
     }
 
     async function loadPortfolio() {
@@ -836,7 +1010,6 @@ window.EMBEDDED_NEWS = [
         "Updated " + new Date().toLocaleTimeString() + " (every 60s)";
     }
 
-    // Fetch live NYT Business & WSJ Business/Markets directly in the browser every 60s (no PC needed!)
     async function loadNews() {
       if (window.EMBEDDED_NEWS && window.EMBEDDED_NEWS.length) {
         renderNews(window.EMBEDDED_NEWS);
@@ -874,11 +1047,12 @@ window.EMBEDDED_NEWS = [
       } catch (e) {}
     }
 
-    initCalendar();
+    loadCalendarTicker();
     loadPortfolio();
     loadNews();
     setInterval(loadPortfolio, 60000);
     setInterval(loadNews, 60000);
+    setInterval(loadCalendarTicker, 60000);
   </script>
 </body>
 </html>
