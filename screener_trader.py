@@ -47,6 +47,33 @@ HIGH_RISK_POSITIONS = {
     "OPFI": {"qty": 14.93, "cost_basis": 100.00, "avg_price": 6.70},
 }
 
+# All trades completed/submitted by the autonomous trading system (newest first)
+SYSTEM_TRADES_BASELINE = [
+    {"id": "6aebc071-e50e-4eec-8fb4-6601ebff2bfa", "symbol": "OPFI", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 14.93, "price": 6.70, "total_usd": 100.00, "created_at": "2026-11-04T23:32:01Z"},
+    {"id": "6aebc06f-356d-4910-b56f-4cc89254c44e", "symbol": "RIG", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 18.18, "price": 5.50, "total_usd": 100.00, "created_at": "2026-11-04T23:31:59Z"},
+    {"id": "6aebc06e-58ec-4218-a8b7-84577d4fa5c1", "symbol": "SNAP", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 18.69, "price": 5.35, "total_usd": 100.00, "created_at": "2026-11-04T23:31:58Z"},
+    {"id": "6aebc06c-b8bd-4090-8586-b2810bca55de", "symbol": "BB", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 11.39, "price": 8.78, "total_usd": 100.00, "created_at": "2026-11-04T23:31:56Z"},
+    {"id": "6aebc06b-266c-49fd-80ab-12ccc0d30f6e", "symbol": "BTG", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 19.53, "price": 5.12, "total_usd": 100.00, "created_at": "2026-11-04T23:31:55Z"},
+    {"id": "6aebc069-72de-4a87-b8ac-9e36b2262fc2", "symbol": "PAYO", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 13.89, "price": 7.20, "total_usd": 100.00, "created_at": "2026-11-04T23:31:53Z"},
+    {"id": "6aebc067-b6c4-481a-933e-8e8d6d83042c", "symbol": "FINV", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 32.57, "price": 3.07, "total_usd": 100.00, "created_at": "2026-11-04T23:31:51Z"},
+    {"id": "6aebc066-f191-4c51-a72a-f224cd9d3725", "symbol": "WB", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 15.22, "price": 6.57, "total_usd": 100.00, "created_at": "2026-11-04T23:31:50Z"},
+    {"id": "6aebc064-4c9f-4508-9ead-395d7a0c60f2", "symbol": "GRAB", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 29.85, "price": 3.35, "total_usd": 100.00, "created_at": "2026-11-04T23:31:48Z"},
+    {"id": "6aebc063-ad04-47c1-b397-3ff7e479fba7", "symbol": "RUN", "side": "BUY", "portfolio": "High Risk ($1k)", "state": "QUEUED", "qty": 10.34, "price": 9.67, "total_usd": 100.00, "created_at": "2026-11-04T23:31:47Z"},
+    {"id": "6aeb9afa-c966-44f5-8aef-67417b174b0c", "symbol": "URG", "side": "SELL", "portfolio": "Legacy Cleanup", "state": "FILLED", "qty": 77.82, "price": 0.75, "total_usd": 58.44, "created_at": "2026-11-04T20:52:10Z"},
+    {"id": "6aeb9af8-bc31-4e68-8680-253ad1cf6329", "symbol": "HIVE", "side": "SELL", "portfolio": "Legacy Cleanup", "state": "FILLED", "qty": 31.35, "price": 1.81, "total_usd": 56.90, "created_at": "2026-11-04T20:52:08Z"},
+    {"id": "6aeb9af6-07a3-48bd-95ac-38cf8054163a", "symbol": "AVGO", "side": "SELL", "portfolio": "Legacy Cleanup", "state": "FILLED", "qty": 0.5898, "price": 325.12, "total_usd": 191.76, "created_at": "2026-11-04T20:52:06Z"},
+    {"id": "6aeb775a-79a8-447d-88e3-f4281fd9b8ab", "symbol": "PLTR", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 5.84, "price": 171.24, "total_usd": 1000.04, "created_at": "2026-11-04T18:20:10Z"},
+    {"id": "6aeb7759-4432-434b-a06a-f8e858854863", "symbol": "SHOP", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 6.58, "price": 151.96, "total_usd": 999.86, "created_at": "2026-11-04T18:20:09Z"},
+    {"id": "6aeb7757-f26e-45bf-9050-bcb9e6f7257c", "symbol": "CDNS", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 3.03, "price": 329.94, "total_usd": 999.72, "created_at": "2026-11-04T18:20:07Z"},
+    {"id": "6aeb7755-6a7f-48b1-8e63-137d234a8291", "symbol": "ISRG", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 2.06, "price": 485.18, "total_usd": 999.47, "created_at": "2026-11-04T18:20:05Z"},
+    {"id": "6aeb7753-f801-432e-be60-b3fa7d2e96bb", "symbol": "GRMN", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 3.43, "price": 291.69, "total_usd": 1000.50, "created_at": "2026-11-04T18:20:03Z"},
+    {"id": "6aeb7751-e5d3-4612-af75-ebbe0dba9863", "symbol": "TSM", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 2.52, "price": 397.02, "total_usd": 1000.49, "created_at": "2026-11-04T18:20:01Z"},
+    {"id": "6aeb7750-12a0-4f03-b1ab-3d1294dba0ff", "symbol": "META", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 1.57, "price": 636.78, "total_usd": 999.74, "created_at": "2026-11-04T18:20:00Z"},
+    {"id": "6aeb774e-ba96-41d2-819d-af4b4f598b0b", "symbol": "AMZN", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 3.71, "price": 269.84, "total_usd": 1001.11, "created_at": "2026-11-04T18:19:58Z"},
+    {"id": "6aeb774c-a492-44d9-b401-61ad86a98db9", "symbol": "AAPL", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 2.83, "price": 353.81, "total_usd": 1001.27, "created_at": "2026-11-04T18:19:56Z"},
+    {"id": "6aeb774b-c40c-4c97-a179-496e34e39a36", "symbol": "MSFT", "side": "BUY", "portfolio": "$10k Portfolio", "state": "FILLED", "qty": 1.80, "price": 556.10, "total_usd": 1000.98, "created_at": "2026-11-04T18:19:55Z"},
+]
+
 TOTAL_BUDGET = 10000.00
 NUM_POSITIONS = 10          # 5 Core Tech + 5 Emerging/Next-Gen Tech
 TARGET_PER_POSITION = 1000.00  # $1,000 per stock = $10,000 total
@@ -495,6 +522,42 @@ def rebalance_portfolio(dry_run: bool = False) -> dict[str, Any]:
             "total_return_pct": pl_pct,
         })
 
+    # Build complete list of all system trades (rebalance rotations + initial & high-risk trades)
+    system_trades = []
+    for rot in reversed(ledger.get("rebalances", [])):
+        ts = rot.get("timestamp", now_utc.isoformat())
+        amt = float(rot.get("amount_usd", 1000.0))
+        if rot.get("bought_symbol"):
+            system_trades.append({
+                "id": rot.get("buy_order_id") or f"rot-buy-{ts}",
+                "symbol": rot["bought_symbol"],
+                "side": "BUY",
+                "portfolio": "Rebalance Rotation",
+                "state": "FILLED",
+                "qty": 0.0,
+                "price": 0.0,
+                "total_usd": amt,
+                "created_at": ts,
+            })
+        if rot.get("sold_symbol"):
+            system_trades.append({
+                "id": rot.get("sell_order_id") or f"rot-sell-{ts}",
+                "symbol": rot["sold_symbol"],
+                "side": "SELL",
+                "portfolio": "Rebalance Rotation",
+                "state": "FILLED",
+                "qty": 0.0,
+                "price": 0.0,
+                "total_usd": amt,
+                "created_at": ts,
+            })
+
+    for t in SYSTEM_TRADES_BASELINE:
+        t_copy = dict(t)
+        if t_copy["state"] == "QUEUED" and t_copy["symbol"] in holdings:
+            t_copy["state"] = "FILLED"
+        system_trades.append(t_copy)
+
     summary = {
         "timestamp": now_utc.isoformat(),
         "status": "rebalance_checked",
@@ -503,6 +566,7 @@ def rebalance_portfolio(dry_run: bool = False) -> dict[str, Any]:
         "high_risk_total_usd": round(sum(p["equity_usd"] for p in high_risk_snapshot), 2),
         "rotations_executed": len([a for a in actions if a.get("action") == "rotated"]),
         "actions": actions,
+        "system_trades": system_trades,
         "portfolio_snapshot": portfolio_snapshot,
         "high_risk_snapshot": high_risk_snapshot,
     }
