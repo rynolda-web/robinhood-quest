@@ -377,11 +377,21 @@ def rebalance_portfolio(dry_run: bool = False) -> dict[str, Any]:
     for sym in sorted(tracked_all):
         pos = holdings.get(sym)
         metrics = candidate_map.get(sym, {})
-        if not pos:
+        managed_info = MANAGED_POSITIONS.get(sym)
+        if not pos and not managed_info:
             continue
 
-        price = float(pos.get("price", 0.0))
-        managed_info = MANAGED_POSITIONS.get(sym)
+        if pos and float(pos.get("price", 0.0)) > 0:
+            price = float(pos.get("price", 0.0))
+        elif metrics.get("price"):
+            price = float(metrics["price"])
+        else:
+            try:
+                lp = rh.stocks.get_latest_price(sym)
+                price = float(lp[0]) if lp and lp[0] else float(managed_info.get("avg_price", 100.0))
+            except Exception:
+                price = float(managed_info.get("avg_price", 100.0))
+
         if managed_info:
             qty = float(managed_info["qty"])
             cost_basis = float(managed_info["cost_basis"])
