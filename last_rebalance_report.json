@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-06T06:37:55.910070+00:00",
+  "timestamp": "2026-11-06T07:55:17.336714+00:00",
   "status": "rebalance_checked",
   "total_tracked_equity_usd": 9480.32,
   "high_risk_cost_usd": 1000.0,
@@ -1869,9 +1869,9 @@
       "equity_usd": 956.25,
       "pl_usd": -44.86,
       "total_return_pct": -4.48,
-      "score": 109.57,
-      "rsi_14": 59.9,
-      "sma_200": 243.84
+      "score": 108.46,
+      "rsi_14": 55.0,
+      "sma_200": 243.82
     },
     {
       "symbol": "META",
