@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-11-06T17:25:11.523225+00:00",
+  "timestamp": "2026-11-06T18:14:36.992446+00:00",
   "status": "rebalance_checked",
-  "total_tracked_equity_usd": 9626.07,
+  "total_tracked_equity_usd": 9590.95,
   "high_risk_cost_usd": 1000.0,
-  "high_risk_total_usd": 991.24,
+  "high_risk_total_usd": 988.97,
   "rotations_executed": 0,
   "actions": [],
   "system_trades": [
@@ -1840,11 +1840,11 @@
     {
       "symbol": "MSFT",
       "quantity": 1.8,
-      "price": 535.05,
+      "price": 533.75,
       "cost_basis_usd": 1000.98,
-      "equity_usd": 963.1,
-      "pl_usd": -37.88,
-      "total_return_pct": -3.78,
+      "equity_usd": 960.74,
+      "pl_usd": -40.24,
+      "total_return_pct": -4.02,
       "score": 108.25,
       "rsi_14": 54.4,
       "sma_200": 439.45
@@ -1852,11 +1852,11 @@
     {
       "symbol": "AAPL",
       "quantity": 2.83,
-      "price": 344.15,
+      "price": 344.01,
       "cost_basis_usd": 1001.27,
-      "equity_usd": 973.93,
-      "pl_usd": -27.34,
-      "total_return_pct": -2.73,
+      "equity_usd": 973.55,
+      "pl_usd": -27.72,
+      "total_return_pct": -2.77,
       "score": 123.75,
       "rsi_14": 53.0,
       "sma_200": 298.34
@@ -1864,11 +1864,11 @@
     {
       "symbol": "AMZN",
       "quantity": 3.71,
-      "price": 262.2,
+      "price": 261.97,
       "cost_basis_usd": 1001.11,
-      "equity_usd": 972.78,
-      "pl_usd": -28.33,
-      "total_return_pct": -2.83,
+      "equity_usd": 971.91,
+      "pl_usd": -29.2,
+      "total_return_pct": -2.92,
       "score": 108.46,
       "rsi_14": 55.0,
       "sma_200": 243.82
@@ -1876,11 +1876,11 @@
     {
       "symbol": "META",
       "quantity": 1.57,
-      "price": 619.98,
+      "price": 617.79,
       "cost_basis_usd": 999.74,
-      "equity_usd": 973.37,
-      "pl_usd": -26.37,
-      "total_return_pct": -2.64,
+      "equity_usd": 969.93,
+      "pl_usd": -29.81,
+      "total_return_pct": -2.98,
       "score": 76.18,
       "rsi_14": 34.9,
       "sma_200": 632.13
@@ -1888,11 +1888,11 @@
     {
       "symbol": "TSM",
       "quantity": 2.52,
-      "price": 373.78,
+      "price": 371.56,
       "cost_basis_usd": 1000.49,
-      "equity_usd": 941.93,
-      "pl_usd": -58.56,
-      "total_return_pct": -5.85,
+      "equity_usd": 936.34,
+      "pl_usd": -64.15,
+      "total_return_pct": -6.41,
       "score": 85.37,
       "rsi_14": 26.4,
       "sma_200": 401.24
@@ -1900,11 +1900,11 @@
     {
       "symbol": "GRMN",
       "quantity": 3.43,
-      "price": 284.31,
+      "price": 284.23,
       "cost_basis_usd": 1000.5,
-      "equity_usd": 975.17,
-      "pl_usd": -25.33,
-      "total_return_pct": -2.53,
+      "equity_usd": 974.91,
+      "pl_usd": -25.59,
+      "total_return_pct": -2.56,
       "score": 127.33,
       "rsi_14": 53.0,
       "sma_200": 255.28
@@ -1912,11 +1912,11 @@
     {
       "symbol": "ISRG",
       "quantity": 2.06,
-      "price": 457.21,
+      "price": 455.11,
       "cost_basis_usd": 999.47,
-      "equity_usd": 941.85,
-      "pl_usd": -57.62,
-      "total_return_pct": -5.77,
+      "equity_usd": 937.53,
+      "pl_usd": -61.94,
+      "total_return_pct": -6.2,
       "score": 68.32,
       "rsi_14": 64.8,
       "sma_200": 431.56
@@ -1924,11 +1924,11 @@
     {
       "symbol": "CDNS",
       "quantity": 3.03,
-      "price": 314.29,
+      "price": 311.85,
       "cost_basis_usd": 999.72,
-      "equity_usd": 952.3,
-      "pl_usd": -47.42,
-      "total_return_pct": -4.74,
+      "equity_usd": 944.89,
+      "pl_usd": -54.83,
+      "total_return_pct": -5.48,
       "score": 65.5,
       "rsi_14": 41.9,
       "sma_200": 327.71
@@ -1936,11 +1936,11 @@
     {
       "symbol": "SHOP",
       "quantity": 6.58,
-      "price": 150.2,
+      "price": 149.54,
       "cost_basis_usd": 999.86,
-      "equity_usd": 988.32,
-      "pl_usd": -11.54,
-      "total_return_pct": -1.15,
+      "equity_usd": 984.01,
+      "pl_usd": -15.85,
+      "total_return_pct": -1.59,
       "score": 78.83,
       "rsi_14": 38.2,
       "sma_200": 129.88
@@ -1948,11 +1948,11 @@
     {
       "symbol": "PLTR",
       "quantity": 5.84,
-      "price": 161.53,
+      "price": 160.47,
       "cost_basis_usd": 1000.04,
-      "equity_usd": 943.32,
-      "pl_usd": -56.72,
-      "total_return_pct": -5.67,
+      "equity_usd": 937.14,
+      "pl_usd": -62.9,
+      "total_return_pct": -6.29,
       "score": 67.78,
       "rsi_14": 25.4,
       "sma_200": 153.56
@@ -1962,20 +1962,20 @@
     {
       "symbol": "RUN",
       "quantity": 10.34,
-      "price": 10.02,
+      "price": 9.88,
       "cost_basis_usd": 100.0,
-      "equity_usd": 103.61,
-      "pl_usd": 3.61,
-      "total_return_pct": 3.61
+      "equity_usd": 102.21,
+      "pl_usd": 2.21,
+      "total_return_pct": 2.21
     },
     {
       "symbol": "GRAB",
       "quantity": 29.85,
       "price": 3.52,
       "cost_basis_usd": 100.0,
-      "equity_usd": 105.22,
-      "pl_usd": 5.22,
-      "total_return_pct": 5.22
+      "equity_usd": 104.92,
+      "pl_usd": 4.92,
+      "total_return_pct": 4.92
     },
     {
       "symbol": "WB",
@@ -1991,9 +1991,9 @@
       "quantity": 32.57,
       "price": 2.96,
       "cost_basis_usd": 100.0,
-      "equity_usd": 96.57,
-      "pl_usd": -3.43,
-      "total_return_pct": -3.43
+      "equity_usd": 96.41,
+      "pl_usd": -3.59,
+      "total_return_pct": -3.59
     },
     {
       "symbol": "PAYO",
@@ -2007,47 +2007,47 @@
     {
       "symbol": "BTG",
       "quantity": 19.53,
-      "price": 5.37,
+      "price": 5.38,
       "cost_basis_usd": 100.0,
-      "equity_usd": 104.78,
-      "pl_usd": 4.78,
-      "total_return_pct": 4.78
+      "equity_usd": 105.17,
+      "pl_usd": 5.17,
+      "total_return_pct": 5.17
     },
     {
       "symbol": "BB",
       "quantity": 11.39,
-      "price": 8.87,
+      "price": 8.77,
       "cost_basis_usd": 100.0,
-      "equity_usd": 100.97,
-      "pl_usd": 0.97,
-      "total_return_pct": 0.97
+      "equity_usd": 99.9,
+      "pl_usd": -0.1,
+      "total_return_pct": -0.1
     },
     {
       "symbol": "SNAP",
       "quantity": 18.69,
       "price": 4.93,
       "cost_basis_usd": 100.0,
-      "equity_usd": 92.24,
-      "pl_usd": -7.76,
-      "total_return_pct": -7.76
+      "equity_usd": 92.14,
+      "pl_usd": -7.86,
+      "total_return_pct": -7.86
     },
     {
       "symbol": "RIG",
       "quantity": 18.18,
       "price": 5.33,
       "cost_basis_usd": 100.0,
-      "equity_usd": 96.89,
-      "pl_usd": -3.11,
-      "total_return_pct": -3.11
+      "equity_usd": 96.81,
+      "pl_usd": -3.19,
+      "total_return_pct": -3.19
     },
     {
       "symbol": "OPFI",
       "quantity": 14.93,
-      "price": 6.17,
+      "price": 6.2,
       "cost_basis_usd": 100.0,
-      "equity_usd": 92.12,
-      "pl_usd": -7.88,
-      "total_return_pct": -7.88
+      "equity_usd": 92.57,
+      "pl_usd": -7.43,
+      "total_return_pct": -7.43
     }
   ]
 }
